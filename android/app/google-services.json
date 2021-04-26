@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "605205477691",
+    "project_id": "liquidmon-30fc2",
+    "storage_bucket": "liquidmon-30fc2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605205477691:android:8a6d87713fdc6ecc3a5f1e",
+        "android_client_info": {
+          "package_name": "com.liquidmoney"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605205477691-oa34q9nc9vjqp8ln5on1v344nog18itr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5_d0AnjiLkK41px5wTWjPTP-mjrmsWOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605205477691-oa34q9nc9vjqp8ln5on1v344nog18itr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
