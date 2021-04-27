@@ -115,9 +115,9 @@ const styles = StyleSheet.create({
     },
 
     modalView: {
-        marginTop: "15%",
+
         backgroundColor: "white",
-        marginBottom: '40%',
+
         padding: 35,
         alignItems: "center",
         shadowColor: "#000",
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
-        height: "auto",
+        height: "80%",
     },
     modalText: {
         fontSize: 36,

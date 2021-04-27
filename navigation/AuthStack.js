@@ -45,12 +45,9 @@ const AuthStack = () => {
             />
             <Stack.Screen name="Signup"
                 component={SignupScreen}
-                options={({ navigation }) => ({
+                options={({ navigation, }) => ({
                     title: '',
-                    headerStyle: {
-                        backgroundColor: '#bbb',
-
-                    }
+                    header: () => null
                 })} />
         </Stack.Navigator>
 

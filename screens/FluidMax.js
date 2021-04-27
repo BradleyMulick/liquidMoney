@@ -247,7 +247,8 @@ const styles = StyleSheet.create({
         fontSize: 36,
         textAlign: 'right',
         padding: 10,
-        marginLeft: 10
+        marginLeft: 10, 
+        color: 'black'
     },
     fluidDocWarning: {
         fontSize: 16,

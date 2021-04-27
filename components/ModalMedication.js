@@ -38,42 +38,44 @@ const ModalMedication = ({ modalMedication, setModalMedication, fluidName, setFl
 
 
                 </View>
-                <View style={styles.confirm2}>
-                    <Pressable
-                        style={[styles.button, styles.buttonClose]}
-                        onPress={increase}
-                    >
-                        <Font5 name="angle-double-up" size={40} />
-                    </Pressable>
-                    <TextInput
-                        keyboardType='numeric'
-                        style={styles.liquidSetter}
-                        placeholder="0"
-                        onChangeText={handleChange}
-                        onSubmitEditing={() => handleAddTodoMedication(allLogs)}
-                    >{fluidLevel}</TextInput>
-                    <Pressable
-                        style={[styles.button, styles.buttonClose]}
-                        onPress={decrease}
-                    >
-                        <Font5 name="angle-double-down" size={40} />
-                    </Pressable>
-                </View>
-                <View style={styles.confirm}>
-                    <Pressable
-                        style={styles.confirmButt}
-                        onPress={() => handleAddTodoMedication(allLogs)}
-                    >
-                        <Text style={styles.confirmText}>Submit</Text>
-                    </Pressable>
-                </View>
-                <View style={styles.confirm}>
-                    <Pressable
-                        style={[styles.cancelButt, styles.buttonClose]}
-                        onPress={() => cancelLiqMedication()}
-                    >
-                        <Text style={styles.cancelText}>Cancel</Text>
-                    </Pressable>
+                <View style={styles.confirmContain}>
+                    <View style={styles.confirm2}>
+                        <Pressable
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={increase}
+                        >
+                            <Font5 name="angle-double-up" size={40} />
+                        </Pressable>
+                        <TextInput
+                            keyboardType='numeric'
+                            style={styles.liquidSetter}
+                            placeholder="0"
+                            onChangeText={handleChange}
+                            onSubmitEditing={() => handleAddTodoMedication(allLogs)}
+                        >{fluidLevel}</TextInput>
+                        <Pressable
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={decrease}
+                        >
+                            <Font5 name="angle-double-down" size={40} />
+                        </Pressable>
+                    </View>
+                    <View style={styles.confirm}>
+                        <Pressable
+                            style={styles.confirmButt}
+                            onPress={() => handleAddTodoMedication(allLogs)}
+                        >
+                            <Text style={styles.confirmText}>Submit</Text>
+                        </Pressable>
+                    </View>
+                    <View style={styles.confirm}>
+                        <Pressable
+                            style={[styles.cancelButt, styles.buttonClose]}
+                            onPress={() => cancelLiqMedication()}
+                        >
+                            <Text style={styles.cancelText}>Cancel</Text>
+                        </Pressable>
+                    </View>
                 </View>
             </View>
         </Modal>
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
     },
 
     modalView: {
-        marginTop: "15%",
+
         backgroundColor: "white",
         marginBottom: '40%',
         padding: 35,
@@ -116,7 +118,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
-        height: "auto",
+        height: "80%",
     },
     modalText: {
         fontSize: 36,
@@ -130,6 +132,11 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
         marginTop: '3%',
         marginBottom: '5%'
+    },
+    confirmContain: {
+        width: '100%',
+        position: 'absolute',
+        bottom: 0
     },
 
     confirmButt: {
@@ -184,6 +191,7 @@ const styles = StyleSheet.create({
     row: {
         display: 'flex',
         flexDirection: 'row',
+        paddingTop: 40,
         justifyContent: 'space-between',
         alignItems: 'flex-end',
 

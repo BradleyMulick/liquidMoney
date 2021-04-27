@@ -37,42 +37,44 @@ const ModalWine = ({ modalWine, setModalWine, fluidName, setFluidName, liquidTyp
                     </TouchableHighlight>
 
                 </View>
-                <View style={styles.confirm2}>
-                    <Pressable
-                        style={[styles.button, styles.buttonClose]}
-                        onPress={increase}
-                    >
-                        <Font5 name="angle-double-up" size={40} />
-                    </Pressable>
-                    <TextInput
-                        keyboardType='numeric'
-                        style={styles.liquidSetter}
-                        placeholder="0"
-                        onChangeText={handleChange}
-                        onSubmitEditing={() => handleAddTodoWine(allLogs)}
-                    >{fluidLevel}</TextInput>
-                    <Pressable
-                        style={[styles.button, styles.buttonClose]}
-                        onPress={decrease}
-                    >
-                        <Font5 name="angle-double-down" size={40} />
-                    </Pressable>
-                </View>
-                <View style={styles.confirm}>
-                    <Pressable
-                        style={styles.confirmButt}
-                        onPress={() => handleAddTodoWine(allLogs)}
-                    >
-                        <Text style={styles.confirmText}>Submit</Text>
-                    </Pressable>
-                </View>
-                <View style={styles.confirm}>
-                    <Pressable
-                        style={[styles.cancelButt, styles.buttonClose]}
-                        onPress={() => cancelLiqWine()}
-                    >
-                        <Text style={styles.cancelText}>Cancel</Text>
-                    </Pressable>
+                <View style={styles.confirmContain}>
+                    <View style={styles.confirm2}>
+                        <Pressable
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={increase}
+                        >
+                            <Font5 name="angle-double-up" size={40} />
+                        </Pressable>
+                        <TextInput
+                            keyboardType='numeric'
+                            style={styles.liquidSetter}
+                            placeholder="0"
+                            onChangeText={handleChange}
+                            onSubmitEditing={() => handleAddTodoWine(allLogs)}
+                        >{fluidLevel}</TextInput>
+                        <Pressable
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={decrease}
+                        >
+                            <Font5 name="angle-double-down" size={40} />
+                        </Pressable>
+                    </View>
+                    <View style={styles.confirm}>
+                        <Pressable
+                            style={styles.confirmButt}
+                            onPress={() => handleAddTodoWine(allLogs)}
+                        >
+                            <Text style={styles.confirmText}>Submit</Text>
+                        </Pressable>
+                    </View>
+                    <View style={styles.confirm}>
+                        <Pressable
+                            style={[styles.cancelButt, styles.buttonClose]}
+                            onPress={() => cancelLiqWine()}
+                        >
+                            <Text style={styles.cancelText}>Cancel</Text>
+                        </Pressable>
+                    </View>
                 </View>
             </View>
         </Modal>
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     },
 
     modalView: {
-        marginTop: "15%",
+
         backgroundColor: "white",
         marginBottom: '40%',
         padding: 35,
@@ -115,7 +117,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
-        height: "auto",
+        height: "80%",
     },
     modalText: {
         fontSize: 36,
@@ -124,21 +126,29 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 'auto',
         alignItems: 'center',
+        flex: 1,
         justifyContent: 'space-between',
         flexDirection: "row",
         flexWrap: "wrap",
-        marginTop: '3%',
-        marginBottom: '5%'
+
+
+
     },
 
     confirmButt: {
         width: '98%',
         height: '100%',
         alignItems: 'center',
+
         backgroundColor: '#4facfe',
         borderColor: 'black',
         borderWidth: 1,
         borderRadius: 7
+    },
+    confirmContain: {
+        height: 'auto',
+        width: '100%',
+        flex: 1
     },
 
     confirm: {

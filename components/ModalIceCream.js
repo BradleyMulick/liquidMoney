@@ -28,17 +28,17 @@ const ModalIceCream = ({ modalIceCream, setModalIceCream, fluidName, setFluidNam
             <View style={styles.modalView}>
                 <Text style={styles.modalText}>{fluidName}</Text>
                 <View style={styles.liquidAdd}>
-                    <TouchableHighlight onPress={() => setNewFluidName('Ice-Cream Cup', 118)} underlayColor="white">
+                    <TouchableHighlight onPress={() => setNewFluidName('Ice Cream Cup', 118)} underlayColor="white">
                         <View style={styles.row} >
 
                             <MatCom name='ice-cream' size={45} color="#4facfe" />
                             <Text >Ice Cream Cup</Text>
                         </View>
                     </TouchableHighlight>
-                    <TouchableHighlight onPress={() => setNewFluidName('Ice-Cream Cone', 118)} underlayColor="white">
+                    <TouchableHighlight onPress={() => setNewFluidName('Ice Cream Cone', 118)} underlayColor="white">
                         <View style={styles.row} >
                             <MatCom name='ice-cream' size={45} color="#4facfe" />
-                            <Text>Ice-Cream Cone</Text>
+                            <Text>Ice Cream Cone</Text>
                         </View>
                     </TouchableHighlight>
                     <TouchableHighlight onPress={() => setNewFluidName('Popcicle', 118)} underlayColor="white">
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     },
 
     modalView: {
-        marginTop: "15%",
+
         backgroundColor: "white",
         marginBottom: '40%',
         padding: 35,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
-        height: "auto",
+        height: "80%",
     },
     modalText: {
         fontSize: 36,
