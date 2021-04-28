@@ -39,6 +39,7 @@ import ModalSurvey from '../components/ModalSurvey';
 import ModalSurvey2 from '../components/ModalSurvey2';
 import { set } from 'react-native-reanimated';
 import ModalWinSur from '../components/ModalWinSur';
+import ModalNoMoney from '../components/ModalNoMoney';
 
 const STORAGE_KEY = '@save_age'
 
@@ -106,6 +107,7 @@ const HomeScreen = ({ navigation }) => {
     const [modalWin, setModalWin] = useState(false)
     const [modalWinSur, setModalWinSur] = useState(false)
     const [modalNoWin, setModalNoWin] = useState(false)
+    const [modalNoMoney, setModalNoMoney] = useState(false)
 
     const [modalFluidMax, setModalFluidMax] = useState(false)
 
@@ -315,7 +317,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                alert("NO MORE MONEY TODAY")
+                setModalNoMoney(true)
             }
         }
     }
@@ -333,7 +335,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                alert("NO MORE MONEY TODAY")
+                setModalNoMoney(true)
             }
         }
     }
@@ -349,7 +351,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                alert("NO MORE MONEY TODAY")
+                setModalNoMoney(true)
             }
         }
     }
@@ -365,7 +367,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                alert("NO MORE MONEY TODAY")
+                setModalNoMoney(true)
             }
         }
     }
@@ -381,7 +383,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                alert("NO MORE MONEY TODAY")
+                setModalNoMoney(true)
             }
         }
     }
@@ -397,7 +399,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                alert("NO MORE MONEY TODAY")
+                setModalNoMoney(true)
             }
         }
     }
@@ -413,7 +415,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                alert("NO MORE MONEY TODAY")
+                setModalNoMoney(true)
             }
         }
     }
@@ -429,7 +431,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                alert("NO MORE MONEY TODAY")
+                setModalNoMoney(true)
             }
         }
     }
@@ -445,7 +447,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                alert("NO MORE MONEY TODAY")
+                setModalNoMoney(true)
             }
 
         }
@@ -462,7 +464,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                alert("NO MORE MONEY TODAY")
+                setModalNoMoney(true)
             }
         }
     }
@@ -478,7 +480,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                alert("NO MORE MONEY TODAY")
+                setModalNoMoney(true)
             }
         }
     }
@@ -494,7 +496,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                alert("NO MORE MONEY TODAY")
+                setModalNoMoney(true)
             }
         }
     }
@@ -766,14 +768,16 @@ const HomeScreen = ({ navigation }) => {
 
     const alertSetMax = async () => {
         try {
-            const fluids = await AsyncStorage.getItem(STORAGE_KEY)
-            if (fluids === null) {
-                navigation.navigate('FluidMax')
-
-            }
+            AsyncStorage.getItem(STORAGE_KEY).then(data => {
+                if (data == null) {
+                    navigation.navigate('FluidMax')
+                    console.log("just saw you need to set your fluid max")
+                }
+            })
         } catch (e) {
-            alert('Failed to save ')
+            alert('Failed to fetch the fluid max')
         }
+
     }
 
     const clearDailyMon = async () => {
@@ -802,14 +806,11 @@ const HomeScreen = ({ navigation }) => {
         // getNotes()
     }, [])
 
-    useEffect(() => {
-        saveDaily()
 
-    }, [dailyTotal])
 
     useEffect(() => {
         saveDaily()
-
+        alertSetMax()
     }, [dailyTotal])
 
 
@@ -840,6 +841,9 @@ const HomeScreen = ({ navigation }) => {
                 : null}
             {modalNoWin === true ?
                 <ModalNoWin modalNoWin={modalNoWin} setModalNoWin={setModalNoWin} />
+                : null}
+            {modalNoMoney === true ?
+                <ModalNoMoney modalNoMoney={modalNoMoney} setModalNoMoney={setModalNoMoney} />
                 : null}
 
             {modalSurvey === true ?
