@@ -286,7 +286,7 @@ const HomeScreen = ({ navigation }) => {
             console.log(allLogs.length + "save function")
             await AsyncStorage.setItem('allTheLogs', JSON.stringify(allLogs))
             setFluidLevel(0)
-
+            clearNightStorage()
         } catch (e) {
             alert('Failed to save the logs to the storage')
         }
@@ -749,13 +749,14 @@ const HomeScreen = ({ navigation }) => {
     }
 
 
-    const loadDaily = () => {
+    const loadDaily = async () => {
+        await clearNightStorage()
         try {
             AsyncStorage.getItem("dailyTotal").then(data => {
                 if (data !== null) {
                     setDailyTotal(JSON.parse(data))
                     console.log(dailyTotal + "hi daily")
-                    clearNightStorage()
+
                 } else {
                     setDailyTotal(0)
                 }
@@ -810,7 +811,7 @@ const HomeScreen = ({ navigation }) => {
 
     useEffect(() => {
         saveDaily()
-        alertSetMax()
+        // alertSetMax()
     }, [dailyTotal])
 
 
