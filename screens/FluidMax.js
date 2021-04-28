@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions, KeyboardAvoidingView, Switch, Keyboard, Modal, Pressable } from 'react-native'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions, Image, KeyboardAvoidingView, Switch, Keyboard, Modal, Pressable } from 'react-native'
 import { AuthContext } from '../navigation/AuthProvider'
 import { FluidContext } from '../navigation/FluidProvider'
 import FormButton from '../components/FormButton';
@@ -26,6 +26,7 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
     const [showFour, setShowFour] = useState(false)
     const [showZero, setShowZero] = useState(false)
     // const [maxFluids, setMaxFluids] = useState('')
+    const [modalAlerty, setModalAlerty] = useState(false)
     const [modalVisible3, setModalVisible3] = useState(false)
 
     const [text, setText] = useState('')
@@ -44,7 +45,7 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
                 console.log("SET THE MODAL OPENNNNNN")
                 setText(0)
             } else {
-                alert("FILL IN MAX FLUIDS!")
+                setModalAlerty(true)
             }
 
         } catch (e) {
@@ -109,26 +110,29 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
                 <ModalVisible3 modalVisible3={modalVisible3} setModalVisible3={setModalVisible3} />
                 : null}
 
-            {/* <Modal
-            animationType="slide"
+            <Modal
+                animationType="slide"
                 transparent={true}
-                visible={modalVisible3}
-                
+                visible={modalAlerty}
+
             >
-            <View style={styles.modalContainer}>
-                <View style={styles.modalBorder}>
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalBorder}>
+                        <View style={styles.logoHolder}>
+
+                            <Image source={require('../assets/liquidLogo.png')} style={{ width: '100%', height: '100%', resizeMode: 'contain' }} />
+                        </View>
 
 
-            <Image source={require('../assets/liquidMon.png')} style={{ width: '50%', height: '25%' }} />
-<Text style={styles.alertText1}>Congrats!</Text>
-<Text style={styles.alertText}>You updated your max fluids</Text>
-<Pressable
+                        {/* <Text style={styles.alertText1}>Congrats!</Text> */}
+                        <Text style={styles.alertText}>SET YOUR MAX FLUIDS</Text>
+                        <Pressable
                             style={styles.alertButtContain}
-                            onPress={() => setModalVisible3(false)}
+                            onPress={() => setModalAlerty(false)}
                         ><Text style={styles.alertTextButton}>OK</Text></Pressable>
+                    </View>
                 </View>
-                </View>
-            </Modal> */}
+            </Modal>
 
 
 
@@ -352,5 +356,9 @@ const styles = StyleSheet.create({
         transform: [{ scaleX: 2 }, { scaleY: 2 }],
         alignSelf: 'flex-start',
 
+    },
+    logoHolder: {
+        height: '25%',
+        width: '50%',
     },
 })
