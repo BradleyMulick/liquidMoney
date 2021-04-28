@@ -74,11 +74,15 @@ const App = () => {
     requestPermissions: true,
   });
 
+
+
+
+
   const isNotificationsOn = () => {
     if (isOn === true) {
       PushNotification.createChannel(
         {
-          channelId: "channel-i", // (required)
+          channelId: "channel-iii", // (required)
           channelName: "My channel", // (required)
           channelDescription: "A channel to categorise your notifications", // (optional) default: undefined.
           playSound: false, // (optional) default: true
@@ -89,7 +93,7 @@ const App = () => {
         (created) => console.log(`createChannel returned '${created}'`) // (optional) callback returns whether the channel was created, false means it already existed.
       );
 
-      console.log("notis set to true aby 555555555555>>>>>>>>>>>>")
+      console.log("notis set to ON")
     } else if (isOn === false) {
 
       PushNotification.abandonPermissions()

@@ -233,7 +233,7 @@ const HomeScreen = ({ navigation }) => {
             }
             else if (newVal == g) {
                 console.log("do nothing")
-            } else if (newVal < g) {
+            } else if (newVal !== g) {
                 AsyncStorage.setItem('theDay', JSON.stringify(g))
                 console.log("new day set and cleared liqs")
                 AsyncStorage.removeItem('dailyTotal');
@@ -945,16 +945,12 @@ const HomeScreen = ({ navigation }) => {
                         <MatCom name="cup-outline" size={50} color="#4facfe" />
                     </Pressable>
                 </View>
-                <View style={styles.box} >
-                    <Pressable onPress={() => clearDailyMon()} underlayColor="white">
-                        <MatCom name="plus-circle" size={80} color="#4facfe" />
-                    </Pressable>
-                </View>
                 <View style={styles.box} onPress={() => Alert.alert('Button Clicked')}>
                     <Pressable onPress={() => liquidTypeSetterRando('plus-circle')} underlayColor="white">
                         <MatCom name="plus-circle" size={50} color="#4facfe" />
                     </Pressable>
                 </View>
+
             </View>
             <View style={styles.liquidHolder}>
                 <View style={{ height: `${totalPerccy}`, backgroundColor: `${overloadColor}`, width: '100%', position: 'absolute', bottom: 0, borderTopWidth: 2, borderColor: 'black' }}></View>
