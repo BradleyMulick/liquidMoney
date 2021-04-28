@@ -138,7 +138,7 @@ const HomeScreen = ({ navigation }) => {
 
 
     const sendSurveyDataF = () => {
-        console.log("WORKK BIOTCHHH")
+        console.log("WORKK")
         firestore()
             .collection('Survey')
             .add({
@@ -218,14 +218,40 @@ const HomeScreen = ({ navigation }) => {
         }
     }
 
-    const clearNightStorage = () => {
+    const clearNightStorage = async () => {
+        let d = new Date()
+        let e = parseInt(d.getMonth() + 1)
+        let f = new Date()
+        let g = parseInt(f.getDate())
+
+        AsyncStorage.getItem('theDay').then(value => {
+            let newVal = JSON.parse(value)
+            console.log(newVal + "hopefullly this is a numberrrr ")
+            if (newVal == null) {
+                AsyncStorage.setItem('theDay', JSON.stringify(g))
+                console.log("no day set, setting day")
+            }
+            else if (newVal == g) {
+                console.log("do nothing")
+            } else if (newVal < g) {
+                AsyncStorage.setItem('theDay', JSON.stringify(g))
+                console.log("new day set and cleared liqs")
+                AsyncStorage.removeItem('dailyTotal');
+                AsyncStorage.removeItem("dailyMoney");
+                setDailyMoneyTotal(.50)
+                setDailyTotal(0)
+            }
+        })
+
+        console.log(g)
+
 
     }
 
 
     useEffect(() => {
-        // resetDay()
-    }, [midnight])
+        // clearNightStorage()
+    }, [])
 
     useEffect(() => {
         loadMidnight()
@@ -263,14 +289,7 @@ const HomeScreen = ({ navigation }) => {
             alert('Failed to save the logs to the storage')
         }
     }
-    // const saveDaily = async () => {
-    //     try {
-    //         console.log(allLogs.length + "save function")
-    //         await AsyncStorage.setItem('dailyTotal', JSON.stringify(dailyTotal))
-    //     } catch (e) {
-    //         alert('Failed to save the daily totaall!!! to the storage')
-    //     }
-    // }
+
 
     const showDate = () => {
         var date = new Date().getDate();
@@ -283,15 +302,7 @@ const HomeScreen = ({ navigation }) => {
 
     const handleAddTodo = () => {
 
-        // if (value.length > 0) {
-        //     setEveryAll([...everyAll, {
-        //         text: value, key: Date.now(), checked:
-        //             false
-        //     }])
-        //     setAllLogs(JSON.stringify(everyAll))
-        //     console.log(allLogs + "yasssssssssss")
-        //     setValue('')
-        // }
+
         if (fluidLevel > 0) {
             total()
             let copy = [...allLogs];
@@ -650,18 +661,6 @@ const HomeScreen = ({ navigation }) => {
         }
     }
 
-    // const loadDailyTotal = async () => {
-    //     try {
-    //         const totes = await AsyncStorage.getItem('dailyTotal')
-    //         if (totes !== null) {
-    //             setDailyTotal(totes)
-    //             console.log("set the stored daily =" + totes)
-    //         }
-    //     } catch (e) {
-    //         alert('Failed to fetch the DailyTotal data from storage')
-    //     }
-    // }
-
 
 
     // ############################################# LOAD MONEY & SAVE MONEY 
@@ -754,6 +753,7 @@ const HomeScreen = ({ navigation }) => {
                 if (data !== null) {
                     setDailyTotal(JSON.parse(data))
                     console.log(dailyTotal + "hi daily")
+                    clearNightStorage()
                 } else {
                     setDailyTotal(0)
                 }
@@ -776,6 +776,20 @@ const HomeScreen = ({ navigation }) => {
         }
     }
 
+    const clearDailyMon = async () => {
+        try {
+            await AsyncStorage.removeItem('dailyTotal');
+            await AsyncStorage.removeItem("dailyMoney");
+            setDailyMoneyTotal(.50)
+            setDailyTotal(0)
+            console.log("worked")
+            clearNightStorage()
+        }
+        catch {
+            console.log("fudge")
+        }
+    }
+
 
 
     useEffect(() => {
@@ -793,6 +807,11 @@ const HomeScreen = ({ navigation }) => {
 
     }, [dailyTotal])
 
+    useEffect(() => {
+        saveDaily()
+
+    }, [dailyTotal])
+
 
     useEffect(() => {
         saveLogs()
@@ -804,23 +823,7 @@ const HomeScreen = ({ navigation }) => {
         dailyDough()
     }, [dailyTotal, maxFluids])
 
-    // const alertSet = () => {
-    //     alert('Set Max liquid!!!')
-    // }
-    // useEffect(() => {
-    //     AsyncStorage.getItem('firstSet').then(value => {
-    //         if (value == null) {
-    //             AsyncStorage.setItem('firstSet', 'true')
-    //             setFirstSet(true)
-    //             alertSet()
-    //             navigation.navigate('FluidMax')
-    //             console.log("set first set to true")
-    //         } else {
-    //             setFirstSet(false)
-    //             console.log("set first set to false")
-    //         }
-    //     })
-    // }, [])
+
 
     return (
 
@@ -940,6 +943,11 @@ const HomeScreen = ({ navigation }) => {
                 <View style={styles.box} onPress={() => Alert.alert('Button Clicked')}>
                     <Pressable onPress={() => liquidTypeSetterMilk('cup-outline')} underlayColor="white">
                         <MatCom name="cup-outline" size={50} color="#4facfe" />
+                    </Pressable>
+                </View>
+                <View style={styles.box} >
+                    <Pressable onPress={() => clearDailyMon()} underlayColor="white">
+                        <MatCom name="plus-circle" size={80} color="#4facfe" />
                     </Pressable>
                 </View>
                 <View style={styles.box} onPress={() => Alert.alert('Button Clicked')}>

@@ -13,7 +13,7 @@ const windowHeight = Dimensions.get('window').height;
 
 const STORAGE_KEY = '@save_age'
 
-const FluidMax = ({  isOn, setIsOn, navigation }) => {
+const FluidMax = ({ isOn, setIsOn, navigation }) => {
 
     // const navigation = useNavigation();
 
@@ -30,23 +30,23 @@ const FluidMax = ({  isOn, setIsOn, navigation }) => {
 
     const [text, setText] = useState('')
     const onChange = text => setText(text)
-    
+
 
     const saveData = async () => {
         try {
-            if (text > 0 ) {
+            if (text > 0) {
                 setMaxFluids(text)
-            
+
                 await AsyncStorage.removeItem(STORAGE_KEY);
-                await  AsyncStorage.setItem(STORAGE_KEY, text)
+                await AsyncStorage.setItem(STORAGE_KEY, text)
                 // navigation.navigate('Home')
                 setModalVisible3(!modalVisible3)
-console.log("SET THE MODAL OPENNNNNN")
+                console.log("SET THE MODAL OPENNNNNN")
                 setText(0)
             } else {
                 alert("FILL IN MAX FLUIDS!")
             }
-            
+
         } catch (e) {
             alert('Failed to save the data to the storage')
         }
@@ -92,24 +92,24 @@ console.log("SET THE MODAL OPENNNNNN")
 
     const onChangeTemp = temp => setText(temp)
     const onChangeText = fluids => setMaxFluids(fluids)
-    
 
-//     useEffect(() => {
-// console.log(isOn + "FLuid max page")
-//     }, [isOn])
+
+    //     useEffect(() => {
+    // console.log(isOn + "FLuid max page")
+    //     }, [isOn])
 
     return (
 
 
-        <View style={styles.container} style={{height: windowHeight}}>
+        <View style={styles.container} style={{ height: windowHeight }}>
 
-{/* MODAL FOR ALERT >>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+            {/* MODAL FOR ALERT >>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
 
-  {modalVisible3 === true ?
+            {modalVisible3 === true ?
                 <ModalVisible3 modalVisible3={modalVisible3} setModalVisible3={setModalVisible3} />
-                : null} 
+                : null}
 
-{/* <Modal
+            {/* <Modal
             animationType="slide"
                 transparent={true}
                 visible={modalVisible3}
@@ -140,11 +140,11 @@ console.log("SET THE MODAL OPENNNNNN")
                 <Text style={styles.title2}>Fluid Restriction</Text>
                 <View style={styles.fluflu}>
 
-                <TextInput
+                    <TextInput
                         style={styles.input}
                         keyboardType='numeric'
                         placeholder={maxFluids}
-                        onChangeText={ onChange}
+                        onChangeText={onChange}
                         onSubmitEditing={Keyboard.dismiss}
                         value={text}
                     ></TextInput>
@@ -157,15 +157,15 @@ console.log("SET THE MODAL OPENNNNNN")
             <View style={styles.radio}>
                 <Text style={styles.bigWarning}>Reminder Schedule</Text>
                 <Switch
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={isOn ? "#f5dd4b" : "#f4f3f4"}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={isOn}
-        style={styles.switcher}
+                    trackColor={{ false: "#767577", true: "#81b0ff" }}
+                    thumbColor={isOn ? "#f5dd4b" : "#f4f3f4"}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleSwitch}
+                    value={isOn}
+                    style={styles.switcher}
 
-      />
-      {/* <Text style={styles.onOff}>OFF/ON</Text>
+                />
+                {/* <Text style={styles.onOff}>OFF/ON</Text>
                 <Text style={styles.bigWarning}>measurement</Text>
                 <Switch
         trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -181,10 +181,9 @@ console.log("SET THE MODAL OPENNNNNN")
             <View style={styles.warning}>
                 <Text style={styles.bigWarning}>WARNING</Text>
                 <Text style={styles.warningInfo}>
-                    This app is meant to be used as a guide and not for medical diagnosis purposes.
-                
+                    The information on this application ("LIQUID MONEY") is not intended or implied to be a substitute for professional medical advice, diagnosis or treatment.  All content including is for general information purposes only.  LIQUID MONEY makes no representation and assumes no responsibility for the accuracy of information contained on or available through LIQUID MONEY and such information is subject to change without notice. LIQUID MONEY IS NOT RESPONSIBLE NOR LIABLE FOR ANY ADVICE, COURSE OF TREATMENT, DIAGNOSIS OR ANY OTHER INFORMATION, SERVICES OR PRODUCTS THAT YOU OBTAIN THROUGH THIS APPLICATION.
                          </Text>
-                         <TouchableOpacity onPress={saveData} style={styles.button}>
+                <TouchableOpacity onPress={saveData} style={styles.button}>
                     <Text style={styles.buttonText}>Save and Agree</Text>
                 </TouchableOpacity>
             </View>
@@ -248,7 +247,7 @@ const styles = StyleSheet.create({
         fontSize: 36,
         textAlign: 'right',
         padding: 10,
-        marginLeft: 10, 
+        marginLeft: 10,
         color: 'black'
     },
     fluidDocWarning: {
@@ -292,7 +291,7 @@ const styles = StyleSheet.create({
     radio: {
         flex: 2,
         padding: 10,
-        justifyContent: 'flex-end',
+
         marginTop: 10
 
 
@@ -300,10 +299,10 @@ const styles = StyleSheet.create({
     radioContainer: {
         display: 'flex',
         flexDirection: 'row'
-    }, 
+    },
     restrictContain: {
         padding: 5
-    }, 
+    },
     modalContainer: {
         backgroundColor: 'white',
         height: '100%',
@@ -313,31 +312,31 @@ const styles = StyleSheet.create({
     },
     alertText1: {
         fontSize: 48,
-       alignItems:'center',
-       textAlign: 'center',
-      color: '#eca400'
+        alignItems: 'center',
+        textAlign: 'center',
+        color: '#eca400'
     },
     alertText: {
         fontSize: 28,
-       alignItems:'center',
-       textAlign: 'center',
-      color: 'black'
+        alignItems: 'center',
+        textAlign: 'center',
+        color: 'black'
     },
     alertButtContain: {
         alignItems: 'center',
-marginTop: 20,
-width: '100%',
+        marginTop: 20,
+        width: '100%',
     },
     modalBorder: {
-width: '90%',
-height: '60%',
-justifyContent: 'center',
-alignItems:'center',
-       textAlign: 'center',
-       padding: 10,
-       borderWidth: 2,
-       borderColor: 'black',
-       borderRadius: 8
+        width: '90%',
+        height: '60%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        padding: 10,
+        borderWidth: 2,
+        borderColor: 'black',
+        borderRadius: 8
     },
     alertTextButton: {
         width: '80%',
@@ -350,8 +349,8 @@ alignItems:'center',
         borderRadius: 8
     },
     switcher: {
-         transform:[{ scaleX: 2 }, { scaleY: 2 }], 
-         alignSelf: 'flex-start',
+        transform: [{ scaleX: 2 }, { scaleY: 2 }],
+        alignSelf: 'flex-start',
 
-    }, 
+    },
 })
