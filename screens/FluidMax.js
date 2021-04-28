@@ -199,6 +199,7 @@ export default FluidMax
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        fontFamily: 'Arial Rounded'
     },
     text: {
         fontSize: 20,

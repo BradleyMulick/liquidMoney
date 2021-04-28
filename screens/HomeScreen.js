@@ -292,175 +292,199 @@ const HomeScreen = ({ navigation }) => {
         //     console.log(allLogs + "yasssssssssss")
         //     setValue('')
         // }
-        total()
-        let copy = [...allLogs];
-        const date = new Date().toString()
-        copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
-        setAllLogs(copy)
+        if (fluidLevel > 0) {
+            total()
+            let copy = [...allLogs];
+            const date = new Date().toString()
+            copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
+            setAllLogs(copy)
 
-        setModal1(!modal1)
+            setModal1(!modal1)
 
-        if (dailyMoneyTotal > 0) {
-            rollDie()
-        } else {
-            alert("NO MORE MONEY TODAY")
+            if (dailyMoneyTotal > 0) {
+                rollDie()
+            } else {
+                alert("NO MORE MONEY TODAY")
+            }
         }
     }
 
 
     const handleAddTodoSnack = () => {
-        total()
-        let copy = [...allLogs];
-        const date = new Date().toString()
-        copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
-        setAllLogs(copy)
+        if (fluidLevel > 0) {
+            total()
+            let copy = [...allLogs];
+            const date = new Date().toString()
+            copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
+            setAllLogs(copy)
 
-        setModalSnack(!modalSnack)
-        if (dailyMoneyTotal > 0) {
-            rollDie()
-        } else {
-            alert("NO MORE MONEY TODAY")
+            setModalSnack(!modalSnack)
+            if (dailyMoneyTotal > 0) {
+                rollDie()
+            } else {
+                alert("NO MORE MONEY TODAY")
+            }
         }
     }
     const handleAddTodoIceCream = () => {
-        total()
-        let copy = [...allLogs];
-        const date = new Date().toString()
-        copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
-        setAllLogs(copy)
+        if (fluidLevel > 0) {
+            total()
+            let copy = [...allLogs];
+            const date = new Date().toString()
+            copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
+            setAllLogs(copy)
 
-        setModalIceCream(!modalIceCream)
-        if (dailyMoneyTotal > 0) {
-            rollDie()
-        } else {
-            alert("NO MORE MONEY TODAY")
+            setModalIceCream(!modalIceCream)
+            if (dailyMoneyTotal > 0) {
+                rollDie()
+            } else {
+                alert("NO MORE MONEY TODAY")
+            }
         }
     }
     const handleAddTodoSoda = () => {
-        total()
-        let copy = [...allLogs];
-        const date = new Date().toString()
-        copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
-        setAllLogs(copy)
+        if (fluidLevel > 0) {
+            total()
+            let copy = [...allLogs];
+            const date = new Date().toString()
+            copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
+            setAllLogs(copy)
 
-        setModalSoda(!modalSoda)
-        if (dailyMoneyTotal > 0) {
-            rollDie()
-        } else {
-            alert("NO MORE MONEY TODAY")
+            setModalSoda(!modalSoda)
+            if (dailyMoneyTotal > 0) {
+                rollDie()
+            } else {
+                alert("NO MORE MONEY TODAY")
+            }
         }
     }
     const handleAddTodoBowl = () => {
-        total()
-        let copy = [...allLogs];
-        const date = new Date().toString()
-        copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
-        setAllLogs(copy)
+        if (fluidLevel > 0) {
+            total()
+            let copy = [...allLogs];
+            const date = new Date().toString()
+            copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
+            setAllLogs(copy)
 
-        setModalBowl(!modalBowl)
-        if (dailyMoneyTotal > 0) {
-            rollDie()
-        } else {
-            alert("NO MORE MONEY TODAY")
+            setModalBowl(!modalBowl)
+            if (dailyMoneyTotal > 0) {
+                rollDie()
+            } else {
+                alert("NO MORE MONEY TODAY")
+            }
         }
     }
     const handleAddTodoCup = () => {
-        total()
-        let copy = [...allLogs];
-        const date = new Date().toString()
-        copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
-        setAllLogs(copy)
+        if (fluidLevel > 0) {
+            total()
+            let copy = [...allLogs];
+            const date = new Date().toString()
+            copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
+            setAllLogs(copy)
 
-        setModalCup(!modalCup)
-        if (dailyMoneyTotal > 0) {
-            rollDie()
-        } else {
-            alert("NO MORE MONEY TODAY")
+            setModalCup(!modalCup)
+            if (dailyMoneyTotal > 0) {
+                rollDie()
+            } else {
+                alert("NO MORE MONEY TODAY")
+            }
         }
     }
     const handleAddTodoFruit = () => {
-        total()
-        let copy = [...allLogs];
-        const date = new Date().toString()
-        copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
-        setAllLogs(copy)
+        if (fluidLevel > 0) {
+            total()
+            let copy = [...allLogs];
+            const date = new Date().toString()
+            copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
+            setAllLogs(copy)
 
-        setModalFruit(!modalFruit)
-        if (dailyMoneyTotal > 0) {
-            rollDie()
-        } else {
-            alert("NO MORE MONEY TODAY")
+            setModalFruit(!modalFruit)
+            if (dailyMoneyTotal > 0) {
+                rollDie()
+            } else {
+                alert("NO MORE MONEY TODAY")
+            }
         }
     }
     const handleAddTodoWine = () => {
-        total()
-        let copy = [...allLogs];
-        const date = new Date().toString()
-        copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
-        setAllLogs(copy)
+        if (fluidLevel > 0) {
+            total()
+            let copy = [...allLogs];
+            const date = new Date().toString()
+            copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
+            setAllLogs(copy)
 
-        setModalWine(!modalWine)
-        if (dailyMoneyTotal > 0) {
-            rollDie()
-        } else {
-            alert("NO MORE MONEY TODAY")
+            setModalWine(!modalWine)
+            if (dailyMoneyTotal > 0) {
+                rollDie()
+            } else {
+                alert("NO MORE MONEY TODAY")
+            }
         }
-
     }
     const handleAddTodoBeer = () => {
-        total()
-        let copy = [...allLogs];
-        const date = new Date().toString()
-        copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
-        setAllLogs(copy)
+        if (fluidLevel > 0) {
+            total()
+            let copy = [...allLogs];
+            const date = new Date().toString()
+            copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
+            setAllLogs(copy)
 
-        setModalBeer(!modalBeer)
-        if (dailyMoneyTotal > 0) {
-            rollDie()
-        } else {
-            alert("NO MORE MONEY TODAY")
+            setModalBeer(!modalBeer)
+            if (dailyMoneyTotal > 0) {
+                rollDie()
+            } else {
+                alert("NO MORE MONEY TODAY")
+            }
+
         }
     }
     const handleAddTodoMedication = () => {
-        total()
-        let copy = [...allLogs];
-        const date = new Date().toString()
-        copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
-        setAllLogs(copy)
+        if (fluidLevel > 0) {
+            total()
+            let copy = [...allLogs];
+            const date = new Date().toString()
+            copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
+            setAllLogs(copy)
 
-        setModalMedication(!modalMedication)
-        if (dailyMoneyTotal > 0) {
-            rollDie()
-        } else {
-            alert("NO MORE MONEY TODAY")
+            setModalMedication(!modalMedication)
+            if (dailyMoneyTotal > 0) {
+                rollDie()
+            } else {
+                alert("NO MORE MONEY TODAY")
+            }
         }
     }
     const handleAddTodoMilk = () => {
-        total()
-        let copy = [...allLogs];
-        const date = new Date().toString()
-        copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
-        setAllLogs(copy)
+        if (fluidLevel > 0) {
+            total()
+            let copy = [...allLogs];
+            const date = new Date().toString()
+            copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
+            setAllLogs(copy)
 
-        setModalMilk(!modalMilk)
-        if (dailyMoneyTotal > 0) {
-            rollDie()
-        } else {
-            alert("NO MORE MONEY TODAY")
+            setModalMilk(!modalMilk)
+            if (dailyMoneyTotal > 0) {
+                rollDie()
+            } else {
+                alert("NO MORE MONEY TODAY")
+            }
         }
     }
     const handleAddTodoRando = () => {
-        total()
-        let copy = [...allLogs];
-        const date = new Date().toString()
-        copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
-        setAllLogs(copy)
+        if (fluidLevel > 0) {
+            total()
+            let copy = [...allLogs];
+            const date = new Date().toString()
+            copy = [...copy, { key: uuid.v4(), id: uuid.v4(), task: fluidLevel, isEdit: null, editText: '', date: todaysDate, liquidType: liquidType, fluidName: fluidName }];
+            setAllLogs(copy)
 
-        setModalRando(!modalRando)
-        if (dailyMoneyTotal > 0) {
-            rollDie()
-        } else {
-            alert("NO MORE MONEY TODAY")
+            setModalRando(!modalRando)
+            if (dailyMoneyTotal > 0) {
+                rollDie()
+            } else {
+                alert("NO MORE MONEY TODAY")
+            }
         }
     }
 

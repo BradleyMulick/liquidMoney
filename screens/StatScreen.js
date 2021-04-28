@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     },
     scrollArea: {
         height: "90%",
+
     },
     text: {
         fontSize: 20,
