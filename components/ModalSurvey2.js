@@ -67,7 +67,7 @@ const ModalSurvey2 = ({ modalSurvey2, setModalSurvey2, modalWinSur, setModalWinS
                     FLUID OVERLOAD
                     </Text>
                 <View style={styles.congratTextHold}>
-                    <Text style={styles.congratText}>in the last 30 days?</Text>
+                    <Text style={styles.congratText}>in the last 12 Months?</Text>
                 </View>
                 <View style={styles.answerHolder}>
                     <Pressable

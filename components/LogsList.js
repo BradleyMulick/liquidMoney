@@ -70,9 +70,6 @@ const LogsList = () => {
             {allLogs.length ? allLogs.map((todo, id) => {
                 return (
 
-
-
-
                     <LogItem key={todo.key} id={todo.id} todo={todo} handleDeleteTodo={handleDeleteTodo} />
 
 
@@ -96,7 +93,8 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 36,
         color: '#4facfe',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+
     },
     itemInput: {
         color: 'yellow'

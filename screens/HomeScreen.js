@@ -227,6 +227,10 @@ const HomeScreen = ({ navigation }) => {
         let f = new Date()
         let g = parseInt(f.getDate())
 
+        let today = new Date()
+        today.setUTCHours(0, 0, 0, 0)
+        console.log(today)
+
         AsyncStorage.getItem('theDay').then(value => {
             let newVal = JSON.parse(value)
             console.log(newVal + "hopefullly this is a numberrrr ")
@@ -234,9 +238,9 @@ const HomeScreen = ({ navigation }) => {
                 AsyncStorage.setItem('theDay', JSON.stringify(g))
                 console.log("no day set, setting day")
             }
-            else if (newVal == g) {
+            else if (newVal !== g) {
                 console.log("do nothing")
-            } else if (newVal !== g) {
+            } else if (newVal == g) {
                 AsyncStorage.setItem('theDay', JSON.stringify(g))
                 console.log("new day set and cleared liqs")
                 AsyncStorage.removeItem('dailyTotal');
@@ -324,7 +328,7 @@ const HomeScreen = ({ navigation }) => {
             console.log(allLogs.length + "save function")
             await AsyncStorage.setItem('allTheLogs', JSON.stringify(allLogs))
             setFluidLevel(0)
-            clearNightStorage()
+            // clearNightStorage()
         } catch (e) {
             alert('Failed to save the logs to the storage')
         }
@@ -788,7 +792,7 @@ const HomeScreen = ({ navigation }) => {
 
 
     const loadDaily = async () => {
-        // await clearNightStorage()
+        await clearNightStorage()
         try {
             AsyncStorage.getItem("dailyTotal").then(data => {
                 if (data !== null) {
@@ -1055,8 +1059,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     totalMoney: {
-        fontSize: 24,
-        zIndex: 1000
+        fontSize: 36,
+        zIndex: 1000,
+        color: '#4facfe'
     },
     dailyTotalDisplay: {
         height: 60,

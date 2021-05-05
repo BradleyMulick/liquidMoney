@@ -150,6 +150,7 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
                         style={styles.input}
                         keyboardType='numeric'
                         placeholder={maxFluids}
+                        placeholderTextColor="#727272"
                         onChangeText={onChange}
                         onSubmitEditing={Keyboard.dismiss}
                         value={text}
@@ -263,7 +264,7 @@ const styles = StyleSheet.create({
         fontFamily: 'arlrdbd'
     },
     warning: {
-        flex: 2,
+        flex: 3,
         padding: 10,
 
         justifyContent: 'flex-end',
@@ -299,7 +300,8 @@ const styles = StyleSheet.create({
     },
     warningInfo: {
         alignItems: 'center',
-        fontFamily: 'arlrdbd'
+        fontFamily: 'arlrdbd',
+        fontSize: 14
 
     },
     radio: {
