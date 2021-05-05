@@ -24,7 +24,7 @@ const ModalNoWin = ({ modalNoWin, setModalNoWin }) => {
                 </View>
                 <Text style={styles.congrat}>Ah Man!</Text>
                 <Text style={styles.congratMoney}>
-                    No credits earned this time, but maybe next time.
+                    No credits earned this time.
                     </Text>
                 <View style={styles.congratTextHold}>
                     <Text style={styles.congratText}>KEEP LOGGING!!!</Text>

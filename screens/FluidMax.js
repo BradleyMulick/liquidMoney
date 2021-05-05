@@ -33,6 +33,8 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
     const onChange = text => setText(text)
 
 
+
+
     const saveData = async () => {
         try {
             if (text > 0) {
@@ -95,9 +97,9 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
     const onChangeText = fluids => setMaxFluids(fluids)
 
 
-    //     useEffect(() => {
-    // console.log(isOn + "FLuid max page")
-    //     }, [isOn])
+    useEffect(() => {
+        setText('')
+    }, [])
 
     return (
 
@@ -184,7 +186,7 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
             </View>
             <View style={styles.warning}>
                 <Text style={styles.bigWarning}>WARNING</Text>
-                <Text style={styles.warningInfo}>
+                <Text style={styles.warningInfo} >
                     The information on this application ("LIQUID MONEY") is not intended or implied to be a substitute for professional medical advice, diagnosis or treatment.  All content including is for general information purposes only.  LIQUID MONEY makes no representation and assumes no responsibility for the accuracy of information contained on or available through LIQUID MONEY and such information is subject to change without notice. LIQUID MONEY IS NOT RESPONSIBLE NOR LIABLE FOR ANY ADVICE, COURSE OF TREATMENT, DIAGNOSIS OR ANY OTHER INFORMATION, SERVICES OR PRODUCTS THAT YOU OBTAIN THROUGH THIS APPLICATION.
                          </Text>
                 <TouchableOpacity onPress={saveData} style={styles.button}>
@@ -202,11 +204,12 @@ export default FluidMax
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        fontFamily: 'Arial Rounded'
+        fontFamily: 'arlrdbd'
     },
     text: {
         fontSize: 20,
-        color: '#333333'
+        color: '#333333',
+        fontFamily: 'arlrdbd'
     },
     header: {
         flex: 1,
@@ -220,7 +223,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         justifyContent: 'center',
         alignItems: 'center',
-        textAlign: 'center'
+        textAlign: 'center',
+
 
     },
     title2: {
@@ -256,6 +260,7 @@ const styles = StyleSheet.create({
     },
     fluidDocWarning: {
         fontSize: 16,
+        fontFamily: 'arlrdbd'
     },
     warning: {
         flex: 2,
@@ -263,10 +268,11 @@ const styles = StyleSheet.create({
 
         justifyContent: 'flex-end',
 
-        marginBottom: '20%'
+        marginBottom: '20%',
 
 
     },
+
     button: {
         height: 50,
         width: '100%',
@@ -285,11 +291,15 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         color: '#4facfe',
-        textAlign: 'left'
+        textAlign: 'left',
+        paddingBottom: 10,
+        fontFamily: ''
+
 
     },
     warningInfo: {
         alignItems: 'center',
+        fontFamily: 'arlrdbd'
 
     },
     radio: {

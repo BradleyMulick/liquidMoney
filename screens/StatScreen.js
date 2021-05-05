@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
+        fontFamily: 'Cookie Crisp'
     },
     scrollArea: {
         height: "90%",

@@ -166,38 +166,38 @@ const HomeScreen = ({ navigation }) => {
 
     }
 
-    const setterMidnight = async () => {
-        try {
-            let d = new Date()
-            let d2 = (d.getDate() + 1)
+    // const setterMidnight = async () => {
+    //     try {
+    //         let d = new Date()
+    //         let d2 = (d.getDate() + 1)
 
-            let stringMidnight = JSON.stringify(d2)
-            await AsyncStorage.setItem("midnight", stringMidnight)
-            console.log(stringMidnight + "Midnight HAS CHANGED")
+    //         let stringMidnight = JSON.stringify(d2)
+    //         await AsyncStorage.setItem("midnight", stringMidnight)
+    //         console.log(stringMidnight + "Midnight HAS CHANGED")
 
-            console.log("SET NEW MIDDDDY" + stringMidnight)
-        } catch (e) {
-            alert('Failed saving MIDNIGHT logs to the storage')
-        }
-    }
+    //         console.log("SET NEW MIDDDDY" + stringMidnight)
+    //     } catch (e) {
+    //         alert('Failed saving MIDNIGHT logs to the storage')
+    //     }
+    // }
 
-    const loadMidnight = async () => {
-        try {
-            await AsyncStorage.getItem("midnight").then(data => {
-                if (data !== null) {
+    // const loadMidnight = async () => {
+    //     try {
+    //         await AsyncStorage.getItem("midnight").then(data => {
+    //             if (data !== null) {
 
-                    console.log(data + "retrieverrrr")
-                    let parser = JSON.parse(data)
-                    setMidnight(20)
+    //                 console.log(data + "retrieverrrr")
+    //                 let parser = JSON.parse(data)
+    //                 setMidnight(20)
 
-                } else {
-                    setterMidnight()
-                }
-            })
-        } catch (e) {
-            alert('Failed to fetch the data from storage')
-        }
-    }
+    //             } else {
+    //                 setterMidnight()
+    //             }
+    //         })
+    //     } catch (e) {
+    //         alert('Failed to fetch the data from storage')
+    //     }
+    // }
 
 
     const resetDay = async () => {
@@ -221,6 +221,7 @@ const HomeScreen = ({ navigation }) => {
     }
 
     const clearNightStorage = async () => {
+
         let d = new Date()
         let e = parseInt(d.getMonth() + 1)
         let f = new Date()
@@ -240,12 +241,49 @@ const HomeScreen = ({ navigation }) => {
                 console.log("new day set and cleared liqs")
                 AsyncStorage.removeItem('dailyTotal');
                 AsyncStorage.removeItem("dailyMoney");
+                AsyncStorage.setItem('dailyTotal', JSON.stringify(0))
                 setDailyMoneyTotal(.50)
                 setDailyTotal(0)
             }
         })
 
         console.log(g)
+
+
+
+        // let today = new Date()
+        // today.setHours(0, 0, 0, 0)
+        // const date = new Date(value)
+        // console.log(today + "clear the night atoregwa beasttt " + date)
+        // const value = await AsyncStorage.getItem('theDay')
+        // if (!!value) {
+        //     AsyncStorage.setItem('theDay', JSON.stringify(today.getTime()))
+        //     console.log("no day set, setting day")
+        // }
+        // else {
+        //     const date = new Date(value)
+        //     console.log(date + "what are thery equal" + today)
+        //     if (today.getTime() !== date.getTime()) {
+        //         console.log("day WAS SET AND WE JUST RESET IT")
+        //         AsyncStorage.setItem('theDay', JSON.stringify(today.getTime()))
+        //         // AsyncStorage.removeItem('dailyTotal');
+        //         AsyncStorage.removeItem("dailyMoney");
+        //         setDailyMoneyTotal(.50)
+        //     }
+        // }
+
+        // else if (newVal == g) {
+        //     console.log("do nothing")
+        // } else if (newVal !== g) {
+        //     AsyncStorage.setItem('theDay', JSON.stringify(today.getTime()))
+        //     console.log("new day set and cleared liqs")
+        //     AsyncStorage.removeItem('dailyTotal');
+        //     AsyncStorage.removeItem("dailyMoney");
+        //     setDailyMoneyTotal(.50)
+        //     setDailyTotal(0)
+        // }
+
+        // console.log(g)
 
 
     }
@@ -256,7 +294,7 @@ const HomeScreen = ({ navigation }) => {
     }, [])
 
     useEffect(() => {
-        loadMidnight()
+        // loadMidnight()
         getTheDate()
     }, [])
 
@@ -317,7 +355,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                setModalNoMoney(true)
+                setModalNoWin(true)
             }
         }
     }
@@ -335,7 +373,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                setModalNoMoney(true)
+                setModalNoWin(true)
             }
         }
     }
@@ -351,7 +389,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                setModalNoMoney(true)
+                setModalNoWin(true)
             }
         }
     }
@@ -367,7 +405,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                setModalNoMoney(true)
+                setModalNoWin(true)
             }
         }
     }
@@ -383,7 +421,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                setModalNoMoney(true)
+                setModalNoWin(true)
             }
         }
     }
@@ -399,7 +437,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                setModalNoMoney(true)
+                setModalNoWin(true)
             }
         }
     }
@@ -415,7 +453,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                setModalNoMoney(true)
+                setModalNoWin(true)
             }
         }
     }
@@ -431,7 +469,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                setModalNoMoney(true)
+                setModalNoWin(true)
             }
         }
     }
@@ -447,7 +485,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                setModalNoMoney(true)
+                setModalNoWin(true)
             }
 
         }
@@ -464,7 +502,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                setModalNoMoney(true)
+                setModalNoWin(true)
             }
         }
     }
@@ -480,7 +518,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                setModalNoMoney(true)
+                setModalNoWin(true)
             }
         }
     }
@@ -496,7 +534,7 @@ const HomeScreen = ({ navigation }) => {
             if (dailyMoneyTotal > 0) {
                 rollDie()
             } else {
-                setModalNoMoney(true)
+                setModalNoWin(true)
             }
         }
     }
@@ -750,7 +788,7 @@ const HomeScreen = ({ navigation }) => {
 
 
     const loadDaily = async () => {
-        await clearNightStorage()
+        // await clearNightStorage()
         try {
             AsyncStorage.getItem("dailyTotal").then(data => {
                 if (data !== null) {
@@ -978,6 +1016,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+
     },
     text: {
         width: "50%",
