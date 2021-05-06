@@ -220,6 +220,7 @@ const HomeScreen = ({ navigation }) => {
         }
     }
 
+
     const clearNightStorage = async () => {
 
         let d = new Date()
@@ -238,16 +239,16 @@ const HomeScreen = ({ navigation }) => {
                 AsyncStorage.setItem('theDay', JSON.stringify(g))
                 console.log("no day set, setting day")
             }
-            else if (newVal !== g) {
+            else if (newVal == g) {
                 console.log("do nothing")
-            } else if (newVal == g) {
+            } else if (newVal !== g) {
                 AsyncStorage.setItem('theDay', JSON.stringify(g))
                 console.log("new day set and cleared liqs")
-                AsyncStorage.removeItem('dailyTotal');
-                AsyncStorage.removeItem("dailyMoney");
+                // AsyncStorage.removeItem('dailyTotal');
+                // AsyncStorage.removeItem("dailyMoney");
                 AsyncStorage.setItem('dailyTotal', JSON.stringify(0))
-                setDailyMoneyTotal(.50)
                 setDailyTotal(0)
+                setDailyMoneyTotal(.50)
             }
         })
 
@@ -754,7 +755,8 @@ const HomeScreen = ({ navigation }) => {
     }
 
 
-    const loadDailyMoneyTotal = () => {
+    const loadDailyMoneyTotal = async () => {
+
         try {
             AsyncStorage.getItem("dailyMoney").then(data => {
                 if (data !== null) {
@@ -792,14 +794,16 @@ const HomeScreen = ({ navigation }) => {
 
 
     const loadDaily = async () => {
-        await clearNightStorage()
+        // clearNightStorage()
         try {
             AsyncStorage.getItem("dailyTotal").then(data => {
                 if (data !== null) {
                     setDailyTotal(JSON.parse(data))
                     console.log(dailyTotal + "hi daily")
 
-                } else {
+                }
+                else {
+
                     setDailyTotal(0)
                 }
             })
@@ -846,6 +850,7 @@ const HomeScreen = ({ navigation }) => {
         // dailyDough()
         loadDaily()
         showDate()
+        clearNightStorage()
         // getNotes()
     }, [])
 
