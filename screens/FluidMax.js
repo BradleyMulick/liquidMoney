@@ -216,28 +216,33 @@ const FluidMax = ({ isOn, setIsOn, convertOn, setConvertOn, navigation }) => {
             </View>
 
             <View style={styles.radio}>
-                <Text style={styles.bigWarning}>Reminder Schedule</Text>
-                <Switch
-                    trackColor={{ false: "#767577", true: "#81b0ff" }}
-                    thumbColor={isOn ? "#f5dd4b" : "#f4f3f4"}
-                    ios_backgroundColor="#3e3e3e"
-                    onValueChange={toggleSwitch}
-                    value={isOn}
-                    style={styles.switcher}
+                <View>
+                    <Text style={styles.bigWarning}>Reminder Schedule</Text>
+                    <Switch
+                        trackColor={{ false: "#767577", true: "#81b0ff" }}
+                        thumbColor={isOn ? "#f5dd4b" : "#f4f3f4"}
+                        ios_backgroundColor="#3e3e3e"
+                        onValueChange={toggleSwitch}
+                        value={isOn}
+                        style={styles.switcher}
 
-                />
-                <Text style={styles.onOff}>OFF/ON</Text>
-                <Text style={styles.bigWarning}>measurement</Text>
-                <Switch
-                    trackColor={{ false: "#767577", true: "#81b0ff" }}
-                    thumbColor={convertOn ? "#192053" : "#f4f3f4"}
-                    ios_backgroundColor="#3e3e3e"
-                    onValueChange={toggleSwitch2}
-                    value={convertOn}
-                    style={styles.switcher}
+                    />
+                    {/* <Text style={styles.onOff}>OFF/ON</Text> */}
+                </View>
+                <View>
 
-                />
-                <Text style={styles.onOff}>ml/Oz</Text>
+                    <Text style={styles.bigWarning}>Measurement</Text>
+                    <Switch
+                        trackColor={{ false: "#81b0ff", true: "#81b0ff" }}
+                        thumbColor={convertOn ? "#f5dd4b" : "f5dd4b"}
+                        ios_backgroundColor="#3e3e3e"
+                        onValueChange={toggleSwitch2}
+                        value={convertOn}
+                        style={styles.switcher}
+
+                    />
+                    <Text style={styles.onOff}>ml / Oz</Text>
+                </View>
             </View>
             <View style={styles.warning}>
                 <Text style={styles.bigWarning}>WARNING</Text>
@@ -343,15 +348,31 @@ const styles = StyleSheet.create({
 
     },
     bigWarning: {
-        fontSize: 24,
+        fontSize: 16,
         fontWeight: 'bold',
         color: '#4facfe',
         textAlign: 'left',
         paddingBottom: 10,
-        fontFamily: ''
+
 
 
     },
+    bigWarning2: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#4facfe',
+        textAlign: 'left',
+        paddingBottom: 10,
+
+
+
+    },
+
+    onOff: {
+        paddingTop: 10,
+        fontSize: 20
+    },
+
     warningInfo: {
         alignItems: 'center',
         fontFamily: 'arlrdbd',
@@ -359,10 +380,11 @@ const styles = StyleSheet.create({
 
     },
     radio: {
-        flex: 2,
+        display: 'flex',
         padding: 10,
-
-        marginTop: 10
+        flexDirection: 'row',
+        marginTop: 5,
+        justifyContent: 'space-around',
 
 
     },
