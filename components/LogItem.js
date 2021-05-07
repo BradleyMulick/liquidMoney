@@ -4,7 +4,9 @@ import Ion from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MatCom from "react-native-vector-icons/MaterialCommunityIcons"
 
-const Task = ({ todo, handleDeleteTodo, id }) => {
+const Task = ({ todo, handleDeleteTodo, id, convertOn }) => {
+
+    const [measure, setMeasure] = React.useState(true)
 
 
     return (
@@ -13,7 +15,15 @@ const Task = ({ todo, handleDeleteTodo, id }) => {
             <Text style={styles.task}>{todo.date}</Text>
             <Text style={styles.task}>{todo.fluidName}</Text>
             <MatCom name={todo.liquidType} size={30} color="#4facfe" />
-            <Text style={styles.task}>{todo.task}mL</Text>
+
+
+            {
+                convertOn === false ?
+                    <Text style={styles.task}>{todo.task}mL</Text>
+                    :
+                    <Text style={styles.task}>{(todo.task / 29.574).toFixed(0)}oz</Text>
+            }
+
             <TouchableOpacity
                 onPress={handleDeleteTodo(id)}
             >

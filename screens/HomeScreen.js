@@ -52,24 +52,11 @@ let config = {
 };
 
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
 
-    const typeOfFLuids = [
-        {
-            "name": "water",
-            "icon": 'cup'
-        },
-        {
-            "name": "beer",
-            "icon": 'beer'
-        },
-        {
-            "name": "wine",
-            "icon": 'glass'
-        }
-    ]
 
-    console.log(typeOfFLuids[1].icon)
+
+
 
     const { user, logout } = useContext(AuthContext)
     const [modalVisible, setModalVisible] = useState(false);
@@ -128,6 +115,10 @@ const HomeScreen = ({ navigation }) => {
 
     const [modalSurvey, setModalSurvey] = useState(false)
     const [modalSurvey2, setModalSurvey2] = useState(false)
+
+
+    const [measure, setMeasure] = useState(false)
+
 
     // PushNotification.localNotificationSchedule({
     //     channelId: "channel-i",
@@ -738,6 +729,7 @@ const HomeScreen = ({ navigation }) => {
 
     useEffect(() => {
         loadMoney()
+
     }, [])
 
     useEffect(() => {
@@ -906,40 +898,40 @@ const HomeScreen = ({ navigation }) => {
                 : null}
 
             {modal1 === true ?
-                <Modal1 modal1={modal1} fluidName={fluidName} setModal1={setModal1} fluidLevel={fluidLevel} setFluidLevel={setFluidLevel} handleAddTodo={handleAddTodo} allLogs={allLogs} cancelLiq={cancelLiq} increase={increase} decrease={decrease} liquidTypeSetter={liquidTypeSetter} liquidType={liquidType} />
+                <Modal1 modal1={modal1} convertOn={convertOn} fluidName={fluidName} setModal1={setModal1} fluidLevel={fluidLevel} setFluidLevel={setFluidLevel} handleAddTodo={handleAddTodo} allLogs={allLogs} cancelLiq={cancelLiq} increase={increase} decrease={decrease} liquidTypeSetter={liquidTypeSetter} liquidType={liquidType} />
                 : null}
             {modalSnack === true ?
-                <ModalSnack modalSnack={modalSnack} setFluidName={setFluidName} handleAddTodoSnack={handleAddTodoSnack} fluidName={fluidName} setModalSnack={setModalSnack} fluidLevel={fluidLevel} setFluidLevel={setFluidLevel} handleAddTodo={handleAddTodo} allLogs={allLogs} cancelLiqSnack={cancelLiqSnack} increase={increase} decrease={decrease} liquidTypeSetter={liquidTypeSetter} liquidType={liquidType} picto={picto} />
+                <ModalSnack modalSnack={modalSnack} convertOn={convertOn} setFluidName={setFluidName} handleAddTodoSnack={handleAddTodoSnack} fluidName={fluidName} setModalSnack={setModalSnack} fluidLevel={fluidLevel} setFluidLevel={setFluidLevel} handleAddTodo={handleAddTodo} allLogs={allLogs} cancelLiqSnack={cancelLiqSnack} increase={increase} decrease={decrease} liquidTypeSetter={liquidTypeSetter} liquidType={liquidType} picto={picto} />
                 : null}
             {modalIceCream === true ?
-                <ModalIceCream modalIceCream={modalIceCream} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalIceCream={setModalIceCream} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoIceCream={handleAddTodoIceCream} allLogs={allLogs} />
+                <ModalIceCream modalIceCream={modalIceCream} convertOn={convertOn} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalIceCream={setModalIceCream} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoIceCream={handleAddTodoIceCream} allLogs={allLogs} />
                 : null}
             {modalSoda === true ?
-                <ModalSoda modalSoda={modalSoda} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalSoda={setModalSoda} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoSoda={handleAddTodoSoda} allLogs={allLogs} />
+                <ModalSoda modalSoda={modalSoda} convertOn={convertOn} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalSoda={setModalSoda} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoSoda={handleAddTodoSoda} allLogs={allLogs} />
                 : null}
             {modalBowl === true ?
-                <ModalBowl modalBowl={modalBowl} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalBowl={setModalBowl} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoBowl={handleAddTodoBowl} allLogs={allLogs} />
+                <ModalBowl modalBowl={modalBowl} convertOn={convertOn} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalBowl={setModalBowl} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoBowl={handleAddTodoBowl} allLogs={allLogs} />
                 : null}
             {modalCup === true ?
-                <ModalCup modalCup={modalCup} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalCup={setModalCup} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoCup={handleAddTodoCup} allLogs={allLogs} />
+                <ModalCup modalCup={modalCup} convertOn={convertOn} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalCup={setModalCup} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoCup={handleAddTodoCup} allLogs={allLogs} />
                 : null}
             {modalFruit === true ?
-                <ModalFruit modalFruit={modalFruit} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalFruit={setModalFruit} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoFruit={handleAddTodoFruit} allLogs={allLogs} />
+                <ModalFruit modalFruit={modalFruit} convertOn={convertOn} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalFruit={setModalFruit} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoFruit={handleAddTodoFruit} allLogs={allLogs} />
                 : null}
             {modalWine === true ?
-                <ModalWine modalWine={modalWine} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalWine={setModalWine} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoWine={handleAddTodoWine} allLogs={allLogs} />
+                <ModalWine modalWine={modalWine} convertOn={convertOn} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalWine={setModalWine} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoWine={handleAddTodoWine} allLogs={allLogs} />
                 : null}
             {modalBeer === true ?
-                <ModalBeer modalBeer={modalBeer} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalBeer={setModalBeer} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoBeer={handleAddTodoBeer} allLogs={allLogs} />
+                <ModalBeer modalBeer={modalBeer} convertOn={convertOn} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalBeer={setModalBeer} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoBeer={handleAddTodoBeer} allLogs={allLogs} />
                 : null}
             {modalMedication === true ?
-                <ModalMedication modalMedication={modalMedication} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalMedication={setModalMedication} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoMedication={handleAddTodoMedication} allLogs={allLogs} />
+                <ModalMedication modalMedication={modalMedication} convertOn={convertOn} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalMedication={setModalMedication} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoMedication={handleAddTodoMedication} allLogs={allLogs} />
                 : null}
             {modalMilk === true ?
-                <ModalMilk modalMilk={modalMilk} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalMilk={setModalMilk} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoMilk={handleAddTodoMilk} allLogs={allLogs} />
+                <ModalMilk modalMilk={modalMilk} convertOn={convertOn} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalMilk={setModalMilk} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoMilk={handleAddTodoMilk} allLogs={allLogs} />
                 : null}
             {modalRando === true ?
-                <ModalRando modalRando={modalRando} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalRando={setModalRando} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoRando={handleAddTodoRando} allLogs={allLogs} />
+                <ModalRando modalRando={modalRando} convertOn={convertOn} fluidLevel={fluidLevel} setFluidName={setFluidName} setFluidLevel={setFluidLevel} setModalRando={setModalRando} increase={increase} decrease={decrease} fluidName={fluidName} handleAddTodoRando={handleAddTodoRando} allLogs={allLogs} />
                 : null}
 
             <View>
@@ -1011,12 +1003,20 @@ const HomeScreen = ({ navigation }) => {
             <View style={styles.liquidHolder}>
                 <View style={{ height: `${totalPerccy}`, backgroundColor: `${overloadColor}`, width: '100%', position: 'absolute', bottom: 0, borderTopWidth: 2, borderColor: 'black' }}></View>
             </View>
-            <View style={styles.dailyTotalDisplay}>
-                <Text style={styles.dailyTotalText}>{dailyTotal} / {maxFluids}</Text>
-            </View>
-            {/* <View style={styles.dailyTotalDisplay}>
-                <Text style={styles.dailyTotalText}>{(dailyTotal / 29.574).toFixed(0)} / {(maxFluids / 29.574).toFixed(0)}</Text>
-            </View> */}
+
+
+            {
+                convertOn === false ?
+                    <View style={styles.dailyTotalDisplay}>
+                        <Text style={styles.dailyTotalText}>{dailyTotal} / {maxFluids} mL</Text>
+                    </View>
+                    :
+                    <View style={styles.dailyTotalDisplay}>
+                        <Text style={styles.dailyTotalText}>{(dailyTotal / 29.574).toFixed(0)} / {(maxFluids / 29.574).toFixed(0)} oz</Text>
+                    </View>
+            }
+
+
             {/* <FormButton buttonTitle="Logout" onPress={() => logout()} /> */}
             <View style={{ width: '100%', height: '80%', position: 'absolute', bottom: 0, borderTopWidth: 2, borderTopColor: `${overloadBar}` }}>
             </View>

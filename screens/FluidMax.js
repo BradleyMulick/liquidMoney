@@ -13,7 +13,7 @@ const windowHeight = Dimensions.get('window').height;
 
 const STORAGE_KEY = '@save_age'
 
-const FluidMax = ({ isOn, setIsOn, navigation }) => {
+const FluidMax = ({ isOn, setIsOn, convertOn, setConvertOn, navigation }) => {
 
     // const navigation = useNavigation();
 
@@ -29,6 +29,8 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
     const [modalAlerty, setModalAlerty] = useState(false)
     const [modalVisible3, setModalVisible3] = useState(false)
 
+    const [measure, setMeasure] = useState(true)
+
     const [text, setText] = useState('')
     const onChange = text => setText(text)
 
@@ -38,14 +40,27 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
     const saveData = async () => {
         try {
             if (text > 0) {
-                setMaxFluids(text)
 
-                await AsyncStorage.removeItem(STORAGE_KEY);
-                await AsyncStorage.setItem(STORAGE_KEY, text)
-                // navigation.navigate('Home')
-                setModalVisible3(!modalVisible3)
-                console.log("SET THE MODAL OPENNNNNN")
-                setText(0)
+                if (measure === false) {
+                    setMaxFluids(text)
+
+                    await AsyncStorage.removeItem(STORAGE_KEY);
+                    await AsyncStorage.setItem(STORAGE_KEY, text)
+                    // navigation.navigate('Home')
+                    setModalVisible3(!modalVisible3)
+                    console.log("SET THE MODAL OPENNNNNN")
+                    setText(0)
+                } else if (measure === true) {
+                    setMaxFluids((text * 29.574).toFixed(0))
+
+                    await AsyncStorage.removeItem(STORAGE_KEY);
+                    await AsyncStorage.setItem(STORAGE_KEY, (text * 29.574).toFixed(0))
+                    // navigation.navigate('Home')
+                    setModalVisible3(!modalVisible3)
+                    console.log("SET THE MODAL OPENNNNNN")
+                    setText(0)
+                }
+
             } else {
                 setModalAlerty(true)
             }
@@ -89,6 +104,10 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
 
     const toggleSwitch = () => {
         setIsOn(previousState => !previousState);
+
+    }
+    const toggleSwitch2 = () => {
+        setConvertOn(previousState => !previousState);
 
     }
 
@@ -144,9 +163,9 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
             <View style={styles.restrictContain}>
 
                 <Text style={styles.title2}>Fluid Restriction</Text>
-                <View style={styles.fluflu}>
 
-                    <TextInput
+
+                {/* <TextInput
                         style={styles.input}
                         keyboardType='numeric'
                         placeholder={maxFluids}
@@ -154,10 +173,45 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
                         onChangeText={onChange}
                         onSubmitEditing={Keyboard.dismiss}
                         value={text}
-                    ></TextInput>
-                    <Text style={styles.millers}>mL*</Text>
-                </View>
-                <Text >Current Fluid Max {maxFluids}mL*</Text>
+                    ></TextInput> */}
+
+
+                {
+                    convertOn === false ?
+                        <View style={styles.fluflu}>
+                            <TextInput
+                                style={styles.input}
+                                keyboardType='numeric'
+                                placeholder={maxFluids}
+                                placeholderTextColor="#727272"
+                                onChangeText={onChange}
+                                onSubmitEditing={Keyboard.dismiss}
+                                value={text}
+                            ></TextInput>
+                            <Text style={styles.millers}>mL*</Text>
+                        </View>
+                        :
+                        <View style={styles.fluflu}>
+                            <TextInput
+                                style={styles.input}
+                                keyboardType='numeric'
+                                placeholder={(maxFluids / 29.574).toFixed(0)}
+                                placeholderTextColor="#727272"
+                                onChangeText={onChange}
+                                onSubmitEditing={Keyboard.dismiss}
+                                value={text}
+                            ></TextInput>
+                            <Text style={styles.millers}>oz*</Text>
+                        </View>
+
+                }
+
+                {
+                    convertOn === false ?
+                        <Text >Current Fluid Max {maxFluids}mL*</Text>
+                        :
+                        <Text >Current Fluid Max {(maxFluids / 29.574).toFixed(0)}oz*</Text>
+                }
                 <Text style={styles.fluidDocWarning}>* Determine this number with your physician.</Text>
             </View>
 
@@ -172,18 +226,18 @@ const FluidMax = ({ isOn, setIsOn, navigation }) => {
                     style={styles.switcher}
 
                 />
-                {/* <Text style={styles.onOff}>OFF/ON</Text>
+                <Text style={styles.onOff}>OFF/ON</Text>
                 <Text style={styles.bigWarning}>measurement</Text>
                 <Switch
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={isOn ? "#f5dd4b" : "#f4f3f4"}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={isOn}
-        style={styles.switcher}
+                    trackColor={{ false: "#767577", true: "#81b0ff" }}
+                    thumbColor={convertOn ? "#192053" : "#f4f3f4"}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleSwitch2}
+                    value={convertOn}
+                    style={styles.switcher}
 
-      />
-      <Text style={styles.onOff}>ml/Oz</Text> */}
+                />
+                <Text style={styles.onOff}>ml/Oz</Text>
             </View>
             <View style={styles.warning}>
                 <Text style={styles.bigWarning}>WARNING</Text>

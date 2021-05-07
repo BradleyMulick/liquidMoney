@@ -18,7 +18,7 @@ const Tab = createBottomTabNavigator();
 
 
 
-const AppStack = ({ setIsOn, isOn }) => {
+const AppStack = ({ setIsOn, isOn, convertOn, setConvertOn }) => {
 
     useEffect(() => {
         console.log(isOn + "app stack")
@@ -59,10 +59,11 @@ const AppStack = ({ setIsOn, isOn }) => {
                         elevation: 0// <-- this is the solution
                     },
                 }}>
-                <Tab.Screen name="Home" component={HomeScreen} />
-                <Tab.Screen name="StatScreen" lazy="false" component={StatScreen} />
+                <Tab.Screen name="Home" children={() => <HomeScreen component={HomeScreen} setIsOn={setIsOn} isOn={isOn} convertOn={convertOn} setConvertOn={setConvertOn} />} />
+                {/* <Tab.Screen name="StatScreen" lazy="false" component={StatScreen} /> */}
+                <Tab.Screen name="StatScreen" children={() => <StatScreen component={StatScreen} setIsOn={setIsOn} isOn={isOn} convertOn={convertOn} setConvertOn={setConvertOn} />} />
                 {/* <Tab.Screen name="FluidMax" component={FluidMax} setIsOn={setIsOn} isOn={isOn} /> */}
-                <Tab.Screen name="FluidMax" children={() => <FluidMax component={FluidMax} setIsOn={setIsOn} isOn={isOn} />} />
+                <Tab.Screen name="FluidMax" children={() => <FluidMax component={FluidMax} setIsOn={setIsOn} isOn={isOn} convertOn={convertOn} setConvertOn={setConvertOn} />} />
             </Tab.Navigator>
         </NavigationContainer>
 

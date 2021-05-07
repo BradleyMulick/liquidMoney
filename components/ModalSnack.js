@@ -6,7 +6,7 @@ import Font5 from 'react-native-vector-icons/FontAwesome5';
 import MatCom from "react-native-vector-icons/MaterialCommunityIcons"
 
 
-const ModalSnack = ({ modalSnack, setModalSnack, setPicto, fluidName, setFluidName, liquidType, setLiquidType, fluidLevel, setFluidLevel, handleAddTodoSnack, allLogs, cancelLiqSnack, increase, decrease }) => {
+const ModalSnack = ({ modalSnack, setModalSnack, setPicto, convertOn, fluidName, setFluidName, liquidType, setLiquidType, fluidLevel, setFluidLevel, handleAddTodoSnack, allLogs, cancelLiqSnack, increase, decrease }) => {
 
     const setNewFluidName = (prop, pic) => {
         setFluidLevel(236)
@@ -58,13 +58,24 @@ const ModalSnack = ({ modalSnack, setModalSnack, setPicto, fluidName, setFluidNa
                     >
                         <Font5 name="angle-double-up" size={40} />
                     </Pressable>
-                    <TextInput
-                        keyboardType='numeric'
-                        style={styles.liquidSetter}
-                        placeholder="0"
-                        onChangeText={handleChange}
-                        onSubmitEditing={() => handleAddTodo(allLogs)}
-                    >{fluidLevel}</TextInput>
+                    {
+                        convertOn === false ?
+                            <TextInput
+                                keyboardType='numeric'
+                                style={styles.liquidSetter}
+                                placeholder="0"
+                                onChangeText={handleChange}
+                                onSubmitEditing={() => handleAddTodo(allLogs)}
+                            >{fluidLevel}</TextInput>
+                            :
+                            <TextInput
+                                keyboardType='numeric'
+                                style={styles.liquidSetter}
+                                placeholder="0"
+                                onChangeText={handleChange}
+                                onSubmitEditing={() => handleAddTodo(allLogs)}
+                            >{(fluidLevel / 29.574).toFixed(0)}</TextInput>
+                    }
                     <Pressable
                         style={[styles.button, styles.buttonClose]}
                         onPress={decrease}

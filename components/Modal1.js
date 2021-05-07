@@ -1,12 +1,14 @@
 import React from 'react'
-import { View, TouchableOpacity, Text, StyleSheet, SafeAreaView, Modal, handleChange, TouchableHighlight, Pressable, TextInput } from 'react-native'
+import { View, TouchableOpacity, Text, StyleSheet, SafeAreaView, Modal, useState, handleChange, TouchableHighlight, Pressable, TextInput } from 'react-native'
 import Ion from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Font5 from 'react-native-vector-icons/FontAwesome5';
 import MatCom from "react-native-vector-icons/MaterialCommunityIcons"
 
 
-const Modal1 = ({ modal1, setModal1, fluidName, liquidType, fluidLevel, setFluidLevel, handleAddTodo, allLogs, cancelLiq, increase, decrease }) => {
+const Modal1 = ({ modal1, setModal1, convertOn, fluidName, liquidType, fluidLevel, setFluidLevel, handleAddTodo, allLogs, cancelLiq, increase, decrease }) => {
+
+    const [onner, setOnner] = React.useState(true)
 
     return (
         <Modal
@@ -49,13 +51,32 @@ const Modal1 = ({ modal1, setModal1, fluidName, liquidType, fluidLevel, setFluid
                     >
                         <Font5 name="angle-double-up" size={40} />
                     </Pressable>
-                    <TextInput
+                    {/* <TextInput
                         keyboardType='numeric'
                         style={styles.liquidSetter}
                         placeholder="0"
                         onChangeText={handleChange}
                         onSubmitEditing={() => handleAddTodo(allLogs)}
-                    >{fluidLevel}</TextInput>
+                    >{fluidLevel}</TextInput> */}
+
+                    {
+                        convertOn === false ?
+                            <TextInput
+                                keyboardType='numeric'
+                                style={styles.liquidSetter}
+                                placeholder="0"
+                                onChangeText={handleChange}
+                                onSubmitEditing={() => handleAddTodo(allLogs)}
+                            >{fluidLevel}</TextInput>
+                            :
+                            <TextInput
+                                keyboardType='numeric'
+                                style={styles.liquidSetter}
+                                placeholder="0"
+                                onChangeText={handleChange}
+                                onSubmitEditing={() => handleAddTodo(allLogs)}
+                            >{(fluidLevel / 29.574).toFixed(0)}</TextInput>
+                    }
                     <Pressable
                         style={[styles.button, styles.buttonClose]}
                         onPress={decrease}

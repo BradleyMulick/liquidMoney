@@ -6,7 +6,7 @@ import Font5 from 'react-native-vector-icons/FontAwesome5';
 import MatCom from "react-native-vector-icons/MaterialCommunityIcons"
 
 
-const ModalMedication = ({ modalMedication, setModalMedication, fluidName, setFluidName, liquidType, setLiquidType, fluidLevel, setFluidLevel, handleAddTodoMedication, allLogs, increase, decrease }) => {
+const ModalMedication = ({ modalMedication, setModalMedication, convertOn, fluidName, setFluidName, liquidType, setLiquidType, fluidLevel, setFluidLevel, handleAddTodoMedication, allLogs, increase, decrease }) => {
 
     const setNewFluidName = (prop, nums) => {
         setFluidName(prop)
@@ -46,13 +46,24 @@ const ModalMedication = ({ modalMedication, setModalMedication, fluidName, setFl
                         >
                             <Font5 name="angle-double-up" size={40} />
                         </Pressable>
-                        <TextInput
-                            keyboardType='numeric'
-                            style={styles.liquidSetter}
-                            placeholder="0"
-                            onChangeText={handleChange}
-                            onSubmitEditing={() => handleAddTodoMedication(allLogs)}
-                        >{fluidLevel}</TextInput>
+                        {
+                            convertOn === false ?
+                                <TextInput
+                                    keyboardType='numeric'
+                                    style={styles.liquidSetter}
+                                    placeholder="0"
+                                    onChangeText={handleChange}
+                                    onSubmitEditing={() => handleAddTodo(allLogs)}
+                                >{fluidLevel}</TextInput>
+                                :
+                                <TextInput
+                                    keyboardType='numeric'
+                                    style={styles.liquidSetter}
+                                    placeholder="0"
+                                    onChangeText={handleChange}
+                                    onSubmitEditing={() => handleAddTodo(allLogs)}
+                                >{(fluidLevel / 29.574).toFixed(0)}</TextInput>
+                        }
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={decrease}

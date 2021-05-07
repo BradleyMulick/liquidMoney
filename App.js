@@ -41,6 +41,8 @@ const App = () => {
 
   const [isOn, setIsOn] = useState(true)
 
+  const [convertOn, setConvertOn] = useState(true)
+
   const saveNotifs = async () => {
     try {
       const noti = JSON.stringify(isOn)
@@ -63,6 +65,31 @@ const App = () => {
       alert('Failed to fetch the data from storage')
     }
   }
+
+  const saveConvert = async () => {
+    try {
+      const coni = JSON.stringify(convertOn)
+      await AsyncStorage.setItem("convertOn", coni)
+      console.log(coni + "saveed converter state")
+    } catch (e) {
+      alert('Failed saving Notification status')
+    }
+  }
+
+  const loadConvert = () => {
+    try {
+      AsyncStorage.getItem("convertOn").then(data => {
+        if (data !== null) {
+          setConvertOn(JSON.parse(data))
+          console.log(convertOn + "set stored notification status")
+        }
+      })
+    } catch (e) {
+      alert('Failed to fetch the data from storage')
+    }
+  }
+
+
 
   messaging().setBackgroundMessageHandler(async remoteMessage => {
     console.log('Message handled in the background!', remoteMessage);
@@ -118,15 +145,22 @@ const App = () => {
 
   useEffect(() => {
     loadNotifs()
+    loadConvert()
   }, [])
 
   useEffect(() => {
     isNotificationsOn()
     saveNotifs()
-    console.log(isOn)
+
   }, [isOn])
 
-  return <Providers isOn={isOn} setIsOn={setIsOn} />
+  useEffect(() => {
+
+    saveConvert()
+
+  }, [convertOn])
+
+  return <Providers isOn={isOn} setIsOn={setIsOn} convertOn={convertOn} setConvertOn={setConvertOn} />
 };
 
 

@@ -6,7 +6,7 @@ import Font5 from 'react-native-vector-icons/FontAwesome5';
 import MatCom from "react-native-vector-icons/MaterialCommunityIcons"
 
 
-const ModalFruit = ({ modalFruit, setModalFruit, fluidName, setFluidName, liquidType, setLiquidType, fluidLevel, setFluidLevel, handleAddTodoFruit, allLogs, increase, decrease }) => {
+const ModalFruit = ({ modalFruit, setModalFruit, convertOn, fluidName, setFluidName, liquidType, setLiquidType, fluidLevel, setFluidLevel, handleAddTodoFruit, allLogs, increase, decrease }) => {
 
     const setNewFluidName = (prop, size) => {
         setFluidName(prop)
@@ -57,13 +57,24 @@ const ModalFruit = ({ modalFruit, setModalFruit, fluidName, setFluidName, liquid
                     >
                         <Font5 name="angle-double-up" size={40} />
                     </Pressable>
-                    <TextInput
-                        keyboardType='numeric'
-                        style={styles.liquidSetter}
-                        placeholder="0"
-                        onChangeText={handleChange}
-                        onSubmitEditing={() => handleAddTodoFruit(allLogs)}
-                    >{fluidLevel}</TextInput>
+                    {
+                        convertOn === false ?
+                            <TextInput
+                                keyboardType='numeric'
+                                style={styles.liquidSetter}
+                                placeholder="0"
+                                onChangeText={handleChange}
+                                onSubmitEditing={() => handleAddTodo(allLogs)}
+                            >{fluidLevel}</TextInput>
+                            :
+                            <TextInput
+                                keyboardType='numeric'
+                                style={styles.liquidSetter}
+                                placeholder="0"
+                                onChangeText={handleChange}
+                                onSubmitEditing={() => handleAddTodo(allLogs)}
+                            >{(fluidLevel / 29.574).toFixed(0)}</TextInput>
+                    }
                     <Pressable
                         style={[styles.button, styles.buttonClose]}
                         onPress={decrease}

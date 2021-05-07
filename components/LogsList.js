@@ -4,7 +4,7 @@ import LogItem from './LogItem'
 import { LogsContext } from '../navigation/LogsProvider';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
-const LogsList = () => {
+const LogsList = ({ convertOn }) => {
     const [allLogs, setAllLogs] = useContext(LogsContext)
 
     const [wholeList, setWholeList] = useState([])
@@ -70,7 +70,7 @@ const LogsList = () => {
             {allLogs.length ? allLogs.map((todo, id) => {
                 return (
 
-                    <LogItem key={todo.key} id={todo.id} todo={todo} handleDeleteTodo={handleDeleteTodo} />
+                    <LogItem key={todo.key} id={todo.id} todo={todo} handleDeleteTodo={handleDeleteTodo} convertOn={convertOn} />
 
 
                 )

@@ -8,7 +8,7 @@ import LogsList from '../components/LogsList';
 import { LogsContext } from '../navigation/LogsProvider';
 
 
-const StatScreen = () => {
+const StatScreen = ({ convertOn }) => {
 
     const [allLogs, setAllLogs] = useContext(LogsContext)
 
@@ -16,7 +16,7 @@ const StatScreen = () => {
         <SafeAreaView>
             <ScrollView style={styles.scrollArea}>
                 <View style={styles.container}>
-                    <LogsList allLogs={allLogs} />
+                    <LogsList convertOn={convertOn} allLogs={allLogs} />
                 </View>
             </ScrollView>
         </SafeAreaView>

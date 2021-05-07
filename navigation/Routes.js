@@ -5,7 +5,7 @@ import AuthStack from './AuthStack'
 import AppStack from './AppStack'
 import { AuthContext } from './AuthProvider';
 
-const Routes = ({ setIsOn, isOn }) => {
+const Routes = ({ setIsOn, isOn, convertOn, setConvertOn }) => {
 
     const { user, setUser } = useContext(AuthContext)
     const [initializing, setInitializing] = useState(true)
@@ -25,7 +25,7 @@ const Routes = ({ setIsOn, isOn }) => {
 
     return (
         <NavigationContainer>
-            {user ? <AppStack setIsOn={setIsOn} isOn={isOn} /> : <AuthStack />}
+            {user ? <AppStack setIsOn={setIsOn} isOn={isOn} convertOn={convertOn} setConvertOn={setConvertOn} /> : <AuthStack />}
         </NavigationContainer>
     )
 }

@@ -5,7 +5,7 @@ import { AuthProvider } from './AuthProvider'
 import { FluidProvider } from './FluidProvider'
 import { LogsProvider } from './LogsProvider'
 
-const Providers = ({ isOn, setIsOn }) => {
+const Providers = ({ isOn, setIsOn, convertOn, setConvertOn }) => {
 
 
 
@@ -13,7 +13,7 @@ const Providers = ({ isOn, setIsOn }) => {
         <AuthProvider>
             <FluidProvider>
                 <LogsProvider>
-                    <Routes setIsOn={setIsOn} isOn={isOn} />
+                    <Routes setIsOn={setIsOn} isOn={isOn} convertOn={convertOn} setConvertOn={setConvertOn} />
                 </LogsProvider>
             </FluidProvider>
         </AuthProvider>
