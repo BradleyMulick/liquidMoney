@@ -227,7 +227,7 @@ const HomeScreen = ({ navigation }) => {
         let e = parseInt(d.getMonth() + 1)
         let f = new Date()
         let g = parseInt(f.getDate())
-
+        console.log(d + "yhis is ggggggggg")
         let today = new Date()
         today.setUTCHours(0, 0, 0, 0)
         console.log(today)
@@ -710,6 +710,7 @@ const HomeScreen = ({ navigation }) => {
 
     // ############################################# LOAD MONEY & SAVE MONEY 
     const saveMoney = async () => {
+
         try {
             const jsonMoney = JSON.stringify(totalMoney)
             await AsyncStorage.setItem("totalMoney", jsonMoney)
@@ -783,6 +784,8 @@ const HomeScreen = ({ navigation }) => {
 
 
     const saveDaily = async () => {
+        // added to try it out miight need to remove
+        clearNightStorage()
         try {
             const jsonDaily = JSON.stringify(dailyTotal)
             await AsyncStorage.setItem("dailyTotal", jsonDaily)
@@ -859,6 +862,7 @@ const HomeScreen = ({ navigation }) => {
     useEffect(() => {
         saveDaily()
         // alertSetMax()
+        clearNightStorage()
     }, [dailyTotal])
 
 
@@ -1010,6 +1014,9 @@ const HomeScreen = ({ navigation }) => {
             <View style={styles.dailyTotalDisplay}>
                 <Text style={styles.dailyTotalText}>{dailyTotal} / {maxFluids}</Text>
             </View>
+            {/* <View style={styles.dailyTotalDisplay}>
+                <Text style={styles.dailyTotalText}>{(dailyTotal / 29.574).toFixed(0)} / {(maxFluids / 29.574).toFixed(0)}</Text>
+            </View> */}
             {/* <FormButton buttonTitle="Logout" onPress={() => logout()} /> */}
             <View style={{ width: '100%', height: '80%', position: 'absolute', bottom: 0, borderTopWidth: 2, borderTopColor: `${overloadBar}` }}>
             </View>
