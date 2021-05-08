@@ -30,7 +30,7 @@ const customTextProps = {
   style: {
     fontSize: 16,
     // fontFamily: Platform.OS === 'ios' ? 'HelveticaNeue' : 'Roboto',
-    fontFamily: 'arlrdbd',
+    fontFamily: 'Arial Rounded MT Bold',
     color: 'black'
   }
 };

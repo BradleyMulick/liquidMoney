@@ -12,7 +12,8 @@ target 'liquidMoney' do
     :hermes_enabled => false
   )
 
-  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-async-storage/async-storage'
+  pod 'Firebase/Analytics'
+
 
   target 'liquidMoneyTests' do
     inherit! :complete
