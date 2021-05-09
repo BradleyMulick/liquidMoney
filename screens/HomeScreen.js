@@ -547,20 +547,48 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
 
     const dailyDough = () => {
 
-        const percenty = parseInt(dailyTotal) / parseInt(maxFluids)
-        const totPercenty = percenty * 100
-        setTotalPerccy(totPercenty + '%')
 
-        if (totPercenty >= 100) {
-            setOverloadTracker(true)
-            setOverloadColor('red')
-            setOverloadBar('red')
-            setModalFluidMax(true)
-            // setModalVisible4(true)
-        } else {
-            setOverloadColor('#4facfe')
-            setOverloadBar('black')
+        if (convertOn === false) {
+
+            const percenty = parseInt(dailyTotal) / parseInt(maxFluids)
+            const totPercenty = percenty * 100
+            setTotalPerccy(totPercenty + '%')
+            if (totPercenty >= 100) {
+                setOverloadTracker(true)
+                setOverloadColor('red')
+                setOverloadBar('red')
+                setModalFluidMax(true)
+                // setModalVisible4(true)
+            } else {
+                setOverloadColor('#4facfe')
+                setOverloadBar('black')
+            }
+        } else if (convertOn === true) {
+            const percenty = parseInt((dailyTotal / 29.574).toFixed(0)) / parseInt(maxFluids)
+            const totPercenty = percenty * 100
+            setTotalPerccy(totPercenty + '%')
+            if (totPercenty >= 100) {
+                setOverloadTracker(true)
+                setOverloadColor('red')
+                setOverloadBar('red')
+                setModalFluidMax(true)
+                // setModalVisible4(true)
+            } else {
+                setOverloadColor('#4facfe')
+                setOverloadBar('black')
+            }
         }
+
+        // if (totPercenty >= 100) {
+        //     setOverloadTracker(true)
+        //     setOverloadColor('red')
+        //     setOverloadBar('red')
+        //     setModalFluidMax(true)
+        //     // setModalVisible4(true)
+        // } else {
+        //     setOverloadColor('#4facfe')
+        //     setOverloadBar('black')
+        // }
     }
 
     const rollDie = () => {
@@ -735,6 +763,11 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
     useEffect(() => {
         saveMoney()
     }, [totalMoney])
+
+    useEffect(() => {
+        loadDaily()
+        dailyDough()
+    }, [convertOn])
 
 
     const saveDailyMoneyTotal = async () => {
@@ -1012,7 +1045,8 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
                     </View>
                     :
                     <View style={styles.dailyTotalDisplay}>
-                        <Text style={styles.dailyTotalText}>{(dailyTotal / 29.574).toFixed(0)} / {(maxFluids / 29.574).toFixed(0)} oz</Text>
+                        {/* <Text style={styles.dailyTotalText}>{(dailyTotal / 29.574).toFixed(0)} / {(maxFluids / 29.574).toFixed(0)} oz</Text> */}
+                        <Text style={styles.dailyTotalText}>{(dailyTotal / 29.574).toFixed(0)} / {maxFluids} oz</Text>
                     </View>
             }
 
@@ -1045,14 +1079,14 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         width: '90%',
         flexWrap: "wrap",
-        height: '70%',
+        height: '65%',
         borderColor: 'black',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: .8,
         shadowRadius: 4,
         borderRadius: 4,
         margin: 10,
-        paddingTop: '5%',
+        paddingTop: 20,
         zIndex: 100,
     },
     box: {
@@ -1065,7 +1099,7 @@ const styles = StyleSheet.create({
         margin: 14,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: .8,
+        shadowOpacity: .2,
         shadowRadius: 4,
         alignItems: 'center',
         justifyContent: 'center',
@@ -1073,7 +1107,9 @@ const styles = StyleSheet.create({
     totalMoney: {
         fontSize: 36,
         zIndex: 1000,
-        color: '#4facfe'
+        color: '#4facfe',
+        paddingTop: 20,
+
     },
     dailyTotalDisplay: {
         height: 60,
@@ -1084,7 +1120,8 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderWidth: 1,
         borderRadius: 10,
-        zIndex: 100
+        zIndex: 100,
+        marginBottom: '20%'
     },
     dailyTotalText: {
         fontSize: 36,

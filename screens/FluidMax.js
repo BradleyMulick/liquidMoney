@@ -51,10 +51,12 @@ const FluidMax = ({ isOn, setIsOn, convertOn, setConvertOn, navigation }) => {
                     console.log("SET THE MODAL OPENNNNNN")
                     setText(0)
                 } else if (measure === true) {
-                    setMaxFluids((text * 29.574).toFixed(0))
+                    // setMaxFluids((text * 29.574).toFixed(0))
+                    setMaxFluids(text)
 
                     await AsyncStorage.removeItem(STORAGE_KEY);
-                    await AsyncStorage.setItem(STORAGE_KEY, (text * 29.574).toFixed(0))
+                    // await AsyncStorage.setItem(STORAGE_KEY, (text * 29.574).toFixed(0))
+                    await AsyncStorage.setItem(STORAGE_KEY, text)
                     // navigation.navigate('Home')
                     setModalVisible3(!modalVisible3)
                     console.log("SET THE MODAL OPENNNNNN")
@@ -194,8 +196,10 @@ const FluidMax = ({ isOn, setIsOn, convertOn, setConvertOn, navigation }) => {
                         <View style={styles.fluflu}>
                             <TextInput
                                 style={styles.input}
-                                keyboardType='numeric'
-                                placeholder={(maxFluids / 29.574).toFixed(0)}
+                                keyboardType='number-pad'
+                                returnKeyType='done'
+
+                                placeholder={maxFluids}
                                 placeholderTextColor="#727272"
                                 onChangeText={onChange}
                                 onSubmitEditing={Keyboard.dismiss}
@@ -206,11 +210,15 @@ const FluidMax = ({ isOn, setIsOn, convertOn, setConvertOn, navigation }) => {
 
                 }
 
+                {/* placeholder */}
+                {/* placeholder={(maxFluids / 29.574).toFixed(0)} */}
+
                 {
                     convertOn === false ?
                         <Text >Current Fluid Max {maxFluids}mL*</Text>
                         :
-                        <Text >Current Fluid Max {(maxFluids / 29.574).toFixed(0)}oz*</Text>
+
+                        <Text >Current Fluid Max {maxFluids}oz*</Text>
                 }
                 <Text style={styles.fluidDocWarning}>* Determine this number with your physician.</Text>
             </View>
@@ -241,7 +249,7 @@ const FluidMax = ({ isOn, setIsOn, convertOn, setConvertOn, navigation }) => {
                         style={styles.switcher}
 
                     />
-                    <Text style={styles.onOff}>ml / Oz</Text>
+                    <Text style={styles.onOff}>ml / oz</Text>
                 </View>
             </View>
             <View style={styles.warning}>
@@ -264,12 +272,12 @@ export default FluidMax
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        fontFamily: 'arlrdbd'
+        fontFamily: 'Arial Rounded MT Bold'
     },
     text: {
         fontSize: 20,
         color: '#333333',
-        fontFamily: 'arlrdbd'
+        fontFamily: 'Arial Rounded MT Bold'
     },
     header: {
         flex: 1,
@@ -320,7 +328,7 @@ const styles = StyleSheet.create({
     },
     fluidDocWarning: {
         fontSize: 16,
-        fontFamily: 'arlrdbd'
+        fontFamily: 'Arial Rounded MT Bold'
     },
     warning: {
         flex: 3,
@@ -363,7 +371,7 @@ const styles = StyleSheet.create({
         color: '#4facfe',
         textAlign: 'left',
         paddingBottom: 10,
-
+        alignSelf: 'center'
 
 
     },
@@ -375,7 +383,7 @@ const styles = StyleSheet.create({
 
     warningInfo: {
         alignItems: 'center',
-        fontFamily: 'arlrdbd',
+        fontFamily: 'Arial Rounded MT Bold',
         fontSize: 14
 
     },
@@ -441,8 +449,10 @@ const styles = StyleSheet.create({
         borderRadius: 8
     },
     switcher: {
-        transform: [{ scaleX: 2 }, { scaleY: 2 }],
+        transform: [{ scaleX: 1 }, { scaleY: 1 }],
+        transform: Platform.OS === 'ios' ? [{ scaleX: 1.3 }, { scaleY: 1.3 }] : [{ scaleX: 2 }, { scaleY: 2 }],
         alignSelf: 'flex-start',
+
 
     },
     logoHolder: {
