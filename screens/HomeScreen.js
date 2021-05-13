@@ -147,10 +147,7 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
     }
 
 
-    const getTheDate = () => {
-        let currentTime = new Date
-        console.log(currentTime + "supposed to be midnight")
-    }
+
 
     const theMidnight = () => {
         let endTime = new Date(new Date().setHours(11, 30, 59, 0))
@@ -302,17 +299,58 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
 
 
     useEffect(() => {
+        let currentTime = new Date
+        let superDate = new Date(currentTime)
+        superDate.setMonth(superDate.getMonth() + 1)
+        let superYear = currentTime.getFullYear()
+        let superMonth = superDate.getMonth() + 1
+        superMonth = ("0" + superMonth).slice(-2)
+        let superDay = currentTime.getDate()
+        superDay = ('0' + superDay).slice(-2)
+        let [month, date, year] = new Date().toLocaleDateString("en-US").split("/")
+
+        let superAll = (superYear + '-' + superMonth + '-' + superDay)
+        console.log(superAll)
+        console.log(superDay + "day of supers")
+
+        console.log(superDate.getMonth() + "month of the super date")
         AsyncStorage.getItem('alreadyLoggedIn').then(value => {
             if (value == null) {
                 AsyncStorage.setItem('alreadyLoggedIn', 'true')
+                AsyncStorage.setItem('rewardDate', superAll)
                 setFirstLogin(true)
                 setModalSurvey(!modalSurvey)
             } else {
+
                 setFirstLogin(false)
+                AsyncStorage.getItem('rewardDate').then(val => {
+                    console.log(val)
+                    let freshDate = new Date(val)
+                    console.log(freshDate + "very importtant date right here dude")
+                    if (freshDate <= currentTime) {
+                        setModalSurvey(!modalSurvey)
+                        AsyncStorage.setItem('rewardDate', superAll)
+                    }
+                })
             }
         })
 
     }, [])
+
+
+
+    const getTheDate = () => {
+        let currentTime = new Date
+        let superDate = new Date(currentTime)
+        superDate.setMonth(superDate.getMonth() + 1)
+        console.log(superDate + "SU{PER DATE")
+        const futureDate = new Date("2021-06-06")
+        let [month, date, year] = new Date().toLocaleDateString("en-US").split("/")
+        console.log(month + date + year)
+        console.log(currentTime < futureDate)
+        console.log(futureDate + "the super future date im saving")
+        console.log(currentTime + "supposed to be midnight")
+    }
 
 
     const saveLogs = async () => {
