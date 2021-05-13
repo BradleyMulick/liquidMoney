@@ -804,7 +804,7 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
 
     useEffect(() => {
         loadDaily()
-        dailyDough()
+
     }, [convertOn])
 
 
@@ -934,6 +934,13 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
         // total()
 
     }, [allLogs])
+
+
+    useEffect(() => {
+
+        dailyDough()
+    }, [convertOn])
+
 
     useEffect(() => {
         dailyDough()
