@@ -336,7 +336,7 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
                     console.log(val)
                     let freshDate = new Date(val)
                     console.log(freshDate + "very importtant date right here dude")
-                    if (freshDate >= currentTime) {
+                    if (freshDate <= currentTime) {
                         setModalSurveyMonth(!modalSurveyMonth)
                         AsyncStorage.setItem('rewardDate', superAll)
                     }
