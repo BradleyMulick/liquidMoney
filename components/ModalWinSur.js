@@ -97,7 +97,8 @@ const styles = StyleSheet.create({
     },
     congratWarning: {
         fontSize: 16,
-        marginTop: -20
+        marginTop: -20,
+        textAlign: 'center'
     },
     congratButton: {
         width: '90%',

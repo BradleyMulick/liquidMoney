@@ -40,6 +40,8 @@ import ModalSurvey2 from '../components/ModalSurvey2';
 import { set } from 'react-native-reanimated';
 import ModalWinSur from '../components/ModalWinSur';
 import ModalNoMoney from '../components/ModalNoMoney';
+import ModalSurveyMonth from '../components/ModalSurveyMonth';
+import ModalWinMonth from '../components/ModalWinMonth';
 
 const STORAGE_KEY = '@save_age'
 
@@ -65,6 +67,7 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
     const [maxFluids] = useContext(FluidContext)
 
     const [firstLogin, setFirstLogin] = useState(null)
+    const [modalSurveyMonth, setModalSurveyMonth] = useState(false)
     const [midnight, setMidnight] = useState(0)
 
     const [allLogs, setAllLogs] = useContext(LogsContext)
@@ -93,6 +96,7 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
 
     const [modalWin, setModalWin] = useState(false)
     const [modalWinSur, setModalWinSur] = useState(false)
+    const [modalWinMonth, setModalWinMonth] = useState(false)
     const [modalNoWin, setModalNoWin] = useState(false)
     const [modalNoMoney, setModalNoMoney] = useState(false)
 
@@ -303,9 +307,14 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
         let superDate = new Date(currentTime)
         superDate.setMonth(superDate.getMonth() + 1)
         let superYear = currentTime.getFullYear()
+        // CHANGE THIS BACK FOR MONTHLY REWARD
         let superMonth = superDate.getMonth() + 1
+        // let superMonth = superDate.getMonth()
         superMonth = ("0" + superMonth).slice(-2)
+        console.log(superMonth + "what am iiiiiiiii")
+        // CHANGE THIS BACK TOOO
         let superDay = currentTime.getDate()
+        // let superDay = currentTime.getDate() + 2
         superDay = ('0' + superDay).slice(-2)
         let [month, date, year] = new Date().toLocaleDateString("en-US").split("/")
 
@@ -327,8 +336,8 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
                     console.log(val)
                     let freshDate = new Date(val)
                     console.log(freshDate + "very importtant date right here dude")
-                    if (freshDate <= currentTime) {
-                        setModalSurvey(!modalSurvey)
+                    if (freshDate >= currentTime) {
+                        setModalSurveyMonth(!modalSurveyMonth)
                         AsyncStorage.setItem('rewardDate', superAll)
                     }
                 })
@@ -958,6 +967,9 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
             {modalWinSur === true ?
                 <ModalWinSur modalWinSur={modalWinSur} setModalWinSur={setModalWinSur} setModalSurvey2={setModalSurvey2} winnings={winnings} />
                 : null}
+            {modalWinMonth === true ?
+                <ModalWinMonth modalWinMonth={modalWinMonth} setModalWinMonth={setModalWinMonth} setModalSurvey2={setModalSurvey2} winnings={winnings} />
+                : null}
             {modalFluidMax === true ?
                 <ModalFluidMax modalFluidMax={modalFluidMax} setModalFluidMax={setModalFluidMax} />
                 : null}
@@ -973,6 +985,9 @@ const HomeScreen = ({ navigation, convertOn, setConvertOn }) => {
                 : null}
             {modalSurvey2 === true ?
                 <ModalSurvey2 modalSurvey2={modalSurvey2} setModalSurvey2={setModalSurvey2} user={user} totalMoney={totalMoney} setTotalMoney={setTotalMoney} setWinnings={setWinnings} setModalWinSur={setModalWinSur} modalWinSur={modalWinSur} />
+                : null}
+            {modalSurveyMonth === true ?
+                <ModalSurveyMonth modalSurveyMonth={modalSurveyMonth} setModalSurveyMonth={setModalSurveyMonth} user={user} totalMoney={totalMoney} setTotalMoney={setTotalMoney} setWinnings={setWinnings} setModalWinMonth={setModalWinMonth} modalWinMonth={modalWinMonth} />
                 : null}
 
             {modal1 === true ?
